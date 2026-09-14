@@ -220,3 +220,6 @@ __marimo__/
 
 # local ai bits
 AGENTS.md
+
+# Local migration snapshots and render evidence
+/tmp/

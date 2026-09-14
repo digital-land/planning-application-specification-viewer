@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "planning-application-specification-viewer"
+version = "0.0.0.dev0"
+description = "Static viewer for the planning application data specification"
+requires-python = ">=3.10"
+dependencies = ["planning-application-specification"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.spec-viewer]
+output-directory = "docs"
