@@ -33,7 +33,7 @@ Keep specification loading and rules in the installed package. Do not import the
 
 ## Dependency management
 
-`requirements/requirements.in` declares third-party viewer runtime dependencies. Compilation also reads the local specification package's `pyproject.toml`, so its dependencies are locked without duplicating them. The renderer has no additional runtime dependencies yet.
+`requirements/requirements.in` declares third-party viewer runtime dependencies. Compilation also reads the local specification package's `pyproject.toml`, so its dependencies are locked without duplicating them. Shared rendering uses Jinja, Digital Land Frontend pinned to the baseline Git revision and GOV.UK Frontend Jinja 4.0.0.
 
 `requirements/dev-requirements.in` includes the runtime lock and adds development dependencies. Commit both generated `.txt` files. `make init` installs pip-tools, compiles the locks, syncs the active environment and installs both local packages in editable mode without resolving dependencies again. Run it in the dedicated `spec-viewer` virtual environment because sync removes packages outside the declared requirements.
 
@@ -54,3 +54,11 @@ python -I scripts/smoke_test_specification.py /Users/colm/code/mhclg/digital-lan
 ```
 
 The test loads a field, module, application, codelist and guidance through the installed API. It reports the interpreter, package location, editable installation status and data path. A failure exits with an error. This checks the API connection; full viewer rendering and parity are subsequent work.
+
+## Shared rendering
+
+`spec_viewer.rendering.create_environment()` configures shared templates, filters and base-path-aware links. `copy_static(output_dir)` copies the publishable assets. Page orchestration and the `docs/` build command are the next implementation step.
+
+The shared layout, components, macros, usage partial and styles originate from specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`. GOV.UK Frontend 6.4.0 is vendored with its existing provenance files. The layout retains the current external Digital Land CSS/JavaScript URLs for parity.
+
+Run shared rendering checks with `python -m pytest -q` after `make init`.

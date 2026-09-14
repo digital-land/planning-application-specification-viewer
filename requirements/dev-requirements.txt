@@ -4,8 +4,22 @@
 #
 #    pip-compile --no-index requirements/dev-requirements.in
 #
+digital-land-frontend @ git+https://github.com/digital-land/digital-land-frontend.git@2e85e26209cb0380e4aa9e53a8170f5486d31d55
+    # via -r requirements/requirements.txt
+govuk-frontend-jinja==4.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   digital-land-frontend
 iniconfig==2.3.0
     # via pytest
+jinja2==3.1.6
+    # via
+    #   -r requirements/requirements.txt
+    #   govuk-frontend-jinja
+markupsafe==3.0.3
+    # via
+    #   -r requirements/requirements.txt
+    #   jinja2
 packaging==26.3
     # via pytest
 pluggy==1.6.0
@@ -20,3 +34,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/requirements.txt
     #   python-frontmatter
+validators==0.35.0
+    # via
+    #   -r requirements/requirements.txt
+    #   digital-land-frontend

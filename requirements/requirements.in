@@ -1,2 +1,5 @@
-# Third-party runtime dependencies. Local specification API dependencies are
-# also read from its pyproject.toml by make requirements.
+# Shared rendering dependencies, pinned to the existing viewer baseline where needed.
+jinja2
+markupsafe
+digital-land-frontend @ git+https://github.com/digital-land/digital-land-frontend.git@2e85e26209cb0380e4aa9e53a8170f5486d31d55
+govuk-frontend-jinja==4.0.0
