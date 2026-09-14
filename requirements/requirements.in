@@ -1,0 +1,2 @@
+# Third-party runtime dependencies. Local specification API dependencies are
+# also read from its pyproject.toml by make requirements.

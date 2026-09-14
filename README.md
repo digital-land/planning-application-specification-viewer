@@ -23,13 +23,21 @@ The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec
 Activate the existing `spec-viewer` virtual environment, then run:
 
 ```sh
-make install
+make init
 make smoke-test
 ```
 
 `SPEC_ROOT` defaults to the sibling `../planning-application-data-specification` checkout and can be overridden with `make smoke-test SPEC_ROOT=/path/to/specification`.
 
 Keep specification loading and rules in the installed package. Do not import the source repository's `bin` modules or modify Python's search path. Templates, content and static assets are checkout resources at this stage; a standalone distributable viewer wheel is not yet supported.
+
+## Dependency management
+
+`requirements/requirements.in` declares third-party viewer runtime dependencies. Compilation also reads the local specification package's `pyproject.toml`, so its dependencies are locked without duplicating them. The renderer has no additional runtime dependencies yet.
+
+`requirements/dev-requirements.in` includes the runtime lock and adds development dependencies. Commit both generated `.txt` files. `make init` installs pip-tools, compiles the locks, syncs the active environment and installs both local packages in editable mode without resolving dependencies again. Run it in the dedicated `spec-viewer` virtual environment because sync removes packages outside the declared requirements.
+
+Use `make requirements` to refresh locks and `make sync` to install the existing locks. `make install` remains an alias for `make init`. `pip check` verifies the local package requirements after installation.
 
 ## Specification API smoke test
 
