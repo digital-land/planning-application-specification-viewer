@@ -14,7 +14,7 @@ def test_build_fields_from_explicit_data(tmp_path, monkeypatch, base_url):
     (fields / "name.md").write_text("---\nfield: name\nname: Name\n---\n")
     monkeypatch.chdir(tmp_path)
     output = tmp_path / "site"
-    assert build(source, output, base_url) == 7
+    assert build(source, output, base_url) == 8
     index = BeautifulSoup((output / "field/index.html").read_text(), "html.parser")
     assert [a['href'] for a in index.select('[data-field-item] a')] == [f"{base_url}/field/description", f"{base_url}/field/name"]
     assert index.select_one('[data-fields-search]')
