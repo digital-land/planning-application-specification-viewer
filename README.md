@@ -16,7 +16,7 @@ scripts/              Development checks
 docs/                 Generated site at the repository root
 ```
 
-The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec-viewer]`. The renderer must use this setting when implemented. The build currently generates the field index and detail pages, plus shared static assets. Other page families are not implemented yet, so navigation to them will not resolve in this partial build.
+The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec-viewer]`. The renderer must use this setting when implemented. The build generates the data-model landing page and field, module, component and codelist indexes and detail pages, plus shared static assets. Other page families are not implemented yet, so navigation to them will not resolve in this partial build.
 
 ## Local setup
 
@@ -92,3 +92,9 @@ make serve
 Open `http://localhost:8081/field/`. `make build` writes to the configured repository-root `docs/` directory. Supply `SPEC_ROOT=/path/to/specification` to choose the data checkout, or `BASE_URL=/planning-application-specification-viewer` to build hosted-subpath URLs. The simple preview server serves local-root builds. For alternative output locations use `python -m spec_viewer.build --spec-root /path/to/specification --output /path/to/output`.
 
 The build does not delete existing output. Use a fresh output directory for migration comparisons; removed source fields can otherwise leave old generated pages behind. It does not publish or push anything.
+
+## Data model pages
+
+`pages/data_model.py` renders the data-model landing page and module, component and codelist families. `view_models/containers.py` presents the package's resolved container items and contextual guidance. `view_models/codelists.py` presents codelist metadata, source links and package usage results. Codelist pages preserve the original metadata/source-link presentation without adding value tables.
+
+Index pages only initialise the reusable `index-search.js` component. Application-type, dataset, needs and other page families remain to be migrated, so links to those pages do not resolve in this partial site.

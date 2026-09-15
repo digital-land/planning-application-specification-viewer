@@ -8,6 +8,7 @@ except ModuleNotFoundError:  # Python 3.10
 
 from spec_viewer.data import load_viewer_data
 from spec_viewer.pages.fields import render_fields
+from spec_viewer.pages.data_model import render_data_model
 from spec_viewer.rendering import PROJECT_ROOT, create_environment, copy_static
 
 
@@ -16,6 +17,7 @@ def build(source: Path, output_dir: Path, base_url: str = "") -> int:
     environment = create_environment(base_url)
     output_dir.mkdir(parents=True, exist_ok=True)
     count = render_fields(data.specification, environment, output_dir)
+    count += render_data_model(data.specification, environment, output_dir)
     copy_static(output_dir)
     return count
 
@@ -30,7 +32,7 @@ def main():
     parser.add_argument("--base-url", default="")
     args = parser.parse_args()
     count = build(args.spec_root, args.output, args.base_url)
-    print(f"Built {count} field pages in {args.output.resolve()}")
+    print(f"Built {count} pages in {args.output.resolve()}")
 
 
 if __name__ == "__main__":
