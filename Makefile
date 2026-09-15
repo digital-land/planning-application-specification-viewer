@@ -26,3 +26,16 @@ sync:
 
 smoke-test:
 	$(PYTHON) -I scripts/smoke_test_specification.py "$(SPEC_ROOT)"
+
+BASE_URL ?=
+PORT ?= 8081
+.PHONY: build serve tests
+
+build:
+	$(PYTHON) -m spec_viewer.build --spec-root "$(SPEC_ROOT)" --base-url "$(BASE_URL)"
+
+serve:
+	$(PYTHON) -m http.server $(PORT) --directory docs --bind 127.0.0.1
+
+tests:
+	$(PYTHON) -m pytest -q

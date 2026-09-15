@@ -9,6 +9,10 @@ description = "Static viewer for the planning application data specification"
 requires-python = ">=3.10"
 dependencies = [
     "planning-application-specification",
+    "markdown",
+    "beautifulsoup4",
+    "python-slugify",
+    "tomli; python_version < '3.11'",
     "jinja2",
     "markupsafe",
     "digital-land-frontend @ git+https://github.com/digital-land/digital-land-frontend.git@2e85e26209cb0380e4aa9e53a8170f5486d31d55",

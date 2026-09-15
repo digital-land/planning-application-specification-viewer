@@ -16,7 +16,7 @@ scripts/              Development checks
 docs/                 Generated site at the repository root
 ```
 
-The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec-viewer]`. The renderer must use this setting when implemented. No generated site is added by this scaffold. There is no build command yet; add `build.py`, shared rendering code and page implementations with the first working page family.
+The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec-viewer]`. The renderer must use this setting when implemented. The build currently generates the field index and detail pages, plus shared static assets. Other page families are not implemented yet, so navigation to them will not resolve in this partial build.
 
 ## Local setup
 
@@ -57,7 +57,7 @@ The test uses the viewer loading layer to load a field, module, application, cod
 
 ## Shared rendering
 
-`spec_viewer.rendering.create_environment()` configures shared templates, filters and base-path-aware links. `copy_static(output_dir)` copies the publishable assets. Page orchestration and the `docs/` build command are the next implementation step.
+`spec_viewer.rendering.create_environment()` configures shared templates, filters and base-path-aware links. `copy_static(output_dir)` copies the publishable assets. Field page orchestration lives in `pages/fields.py`, with presentation adapters in `view_models/fields.py`.
 
 The shared layout, components, macros, usage partial and styles originate from specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`. GOV.UK Frontend 6.4.0 is vendored with its existing provenance files. The layout retains the current external Digital Land CSS/JavaScript URLs for parity.
 
@@ -81,3 +81,14 @@ justifications = data.justifications
 ```
 
 Pass the repository root, not its `specification/` subdirectory. The loader uses the installed package's `Specification.load` and `loader.load_needs`; it does not parse source files, change directories or infer a checkout location. Display sorting, links and formatting belong in the view models added with each page family. Missing paths and package loading errors propagate to the caller.
+
+## Build and preview
+
+```sh
+make build
+make serve
+```
+
+Open `http://localhost:8081/field/`. `make build` writes to the configured repository-root `docs/` directory. Supply `SPEC_ROOT=/path/to/specification` to choose the data checkout, or `BASE_URL=/planning-application-specification-viewer` to build hosted-subpath URLs. The simple preview server serves local-root builds. For alternative output locations use `python -m spec_viewer.build --spec-root /path/to/specification --output /path/to/output`.
+
+The build does not delete existing output. Use a fresh output directory for migration comparisons; removed source fields can otherwise leave old generated pages behind. It does not publish or push anything.

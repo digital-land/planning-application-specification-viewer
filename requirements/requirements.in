@@ -3,3 +3,7 @@ jinja2
 markupsafe
 digital-land-frontend @ git+https://github.com/digital-land/digital-land-frontend.git@2e85e26209cb0380e4aa9e53a8170f5486d31d55
 govuk-frontend-jinja==4.0.0
+markdown
+beautifulsoup4
+python-slugify
+tomli; python_version < "3.11"
