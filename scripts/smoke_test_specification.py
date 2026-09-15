@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 
 import planning_application_specification
-from planning_application_specification import Specification
+from spec_viewer.data import load_viewer_data
 
 
 def main():
@@ -16,9 +16,12 @@ def main():
     source = args.source.resolve()
     installed = distribution("planning-application-specification")
     direct_url = json.loads(installed.read_text("direct_url.json") or "{}")
-    spec = Specification.load(source)
+    data = load_viewer_data(source)
+    spec = data.specification
     checks = {
         "field": spec.field("description"),
+        "needs": data.needs,
+        "justifications": data.justifications,
         "module": spec.module("proposal-details"),
         "application": spec.application("full"),
         "codelist": spec.codelist("decision").items,
@@ -37,6 +40,15 @@ def main():
         "editable": direct_url.get("dir_info", {}).get("editable", False),
         "data_path": str(source),
         "checks": list(checks),
+        "counts": {
+            "fields": len(spec.fields),
+            "modules": len(spec.modules),
+            "components": len(spec.components),
+            "datasets": len(spec.datasets),
+            "applications": len(spec.applications),
+            "needs": len(data.needs),
+            "justifications": len(data.justifications),
+        },
     }, indent=2))
 
 

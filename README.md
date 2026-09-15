@@ -44,7 +44,7 @@ Use `make requirements` to refresh locks and `make sync` to install the existing
 Activate the `spec-viewer` virtual environment and install the local API:
 
 ```sh
-python -m pip install -e /Users/colm/code/mhclg/digital-land/planning-application-data-specification
+make init
 ```
 
 From this repository, run:
@@ -53,7 +53,7 @@ From this repository, run:
 python -I scripts/smoke_test_specification.py /Users/colm/code/mhclg/digital-land/planning-application-data-specification
 ```
 
-The test loads a field, module, application, codelist and guidance through the installed API. It reports the interpreter, package location, editable installation status and data path. A failure exits with an error. This checks the API connection; full viewer rendering and parity are subsequent work.
+The test uses the viewer loading layer to load a field, module, application, codelist, guidance, needs and justifications through the installed API. It reports the interpreter, package location, editable installation status and data path. A failure exits with an error. This checks the API connection; full viewer rendering and parity are subsequent work.
 
 ## Shared rendering
 
@@ -62,3 +62,22 @@ The test loads a field, module, application, codelist and guidance through the i
 The shared layout, components, macros, usage partial and styles originate from specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`. GOV.UK Frontend 6.4.0 is vendored with its existing provenance files. The layout retains the current external Digital Land CSS/JavaScript URLs for parity.
 
 Run shared rendering checks with `python -m pytest -q` after `make init`.
+
+## Reading the specification
+
+Page builders load their inputs once and share the returned package models:
+
+```python
+from spec_viewer.data import load_viewer_data
+
+data = load_viewer_data("/path/to/planning-application-data-specification")
+spec = data.specification
+field = spec.field("description")
+fields = spec.fields.values()
+usage = spec.field_usages("description")
+guidance = spec.guidance(dataset="decision-notice", field="planning-officer-recommendation")
+needs = data.needs
+justifications = data.justifications
+```
+
+Pass the repository root, not its `specification/` subdirectory. The loader uses the installed package's `Specification.load` and `loader.load_needs`; it does not parse source files, change directories or infer a checkout location. Display sorting, links and formatting belong in the view models added with each page family. Missing paths and package loading errors propagate to the caller.
