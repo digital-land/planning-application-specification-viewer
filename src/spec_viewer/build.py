@@ -8,6 +8,7 @@ except ModuleNotFoundError:  # Python 3.10
 
 from spec_viewer.data import load_viewer_data
 from spec_viewer.pages.fields import render_fields
+from spec_viewer.pages.needs import render_needs
 from spec_viewer.pages.views import render_views
 from spec_viewer.pages.datasets import render_datasets
 from spec_viewer.pages.applications import render_applications
@@ -24,6 +25,7 @@ def build(source: Path, output_dir: Path, base_url: str = "") -> int:
     count += render_applications(data.specification, environment, output_dir)
     count += render_datasets(data, environment, output_dir)
     count += render_views(data.specification, environment, output_dir)
+    count += render_needs(data, environment, output_dir)
     copy_static(output_dir)
     return count
 

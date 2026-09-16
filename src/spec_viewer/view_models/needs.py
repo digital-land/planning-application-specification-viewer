@@ -164,3 +164,63 @@ def satisfaction_messages_for_field(
             continue
 
     return messages
+
+
+def need_status(justifications: List[Dict[str, Any]]) -> Tuple[str, str]:
+    satisfaction = {j.get("satisfaction", "").lower() for j in justifications}
+    if "full" in satisfaction:
+        return "Satisfied", "govuk-tag--green"
+    if "partial" in satisfaction:
+        return "Partially satisfied", "govuk-tag--blue"
+    if satisfaction:
+        return "Proposed", "govuk-tag--yellow"
+    return "Not satisfied", "govuk-tag--grey"
+
+def need_status_dict(justifications: List[Dict[str, Any]]) -> Dict[str, str]:
+    label, cls = need_status(justifications)
+    return {"tag_label": label, "tag_class": cls}
+
+def build_need_meta(need: Dict[str, Any]) -> List[Dict[str, str]]:
+    meta: List[Dict[str, str]] = []
+    if need.get("priority"):
+        meta.append({"label": "Priority", "value": need.get("priority")})
+    if need.get("status"):
+        meta.append({"label": "Status", "value": need.get("status")})
+    if need.get("themes"):
+        meta.append({"label": "Themes", "value": ", ".join(need.get("themes"))})
+    if need.get("actors"):
+        meta.append({"label": "Actors", "value": ", ".join(need.get("actors"))})
+    if need.get("source"):
+        sources = need.get("source")
+        formatted_sources = (
+            ", ".join([s.get("type", "") for s in sources])
+            if isinstance(sources, list)
+            else str(sources)
+        )
+        meta.append({"label": "Source", "value": formatted_sources})
+    if need.get("variations"):
+        meta.append(
+            {
+                "label": "Variations",
+                "value": ", ".join([str(v) for v in need.get("variations") if v]),
+            }
+        )
+    if need.get("next_step"):
+        meta.append({"label": "Next step", "value": need.get("next_step")})
+    return meta
+
+def justification_search_references(blob: Any) -> List[str]:
+    """Collect labelled references from nested satisfaction conditions."""
+    refs = []
+    if isinstance(blob, dict):
+        for key, value in blob.items():
+            if key in {"dataset", "field", "codelist", "module", "component"} and isinstance(value, str):
+                refs.append(f"{key.capitalize()}: {value}")
+            elif key == "includes" and isinstance(value, list):
+                refs.extend(f"Code: {code}" for code in value if isinstance(code, str))
+            elif isinstance(value, (dict, list)):
+                refs.extend(justification_search_references(value))
+    elif isinstance(blob, list):
+        for item in blob:
+            refs.extend(justification_search_references(item))
+    return list(dict.fromkeys(refs))
