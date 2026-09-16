@@ -1,86 +1,33 @@
 # Planning application specification viewer
 
-An independent static renderer using the installed specification package and an explicit path to specification data.
+A static site for exploring the planning application data standard. The viewer generates HTML from the installed [specification package and source data](https://github.com/digital-land/planning-application-data-specification), with its own rendering code, templates and presentation content.
 
-## Structure
-
-```text
-src/spec_viewer/       Python renderer package
-    pages/            Page-family orchestration
-    view_models/      Presentation adapters for API results
-templates/            Page layouts and shared components
-content/              Viewer-specific Markdown prose
-static/               CSS, JavaScript, fonts and images
-tests/                Viewer behaviour tests
-scripts/              Development checks
-docs/                 Generated site at the repository root
-```
-
-The output directory is declared as `docs` in `pyproject.toml` under `[tool.spec-viewer]`. The renderer must use this setting when implemented. The build generates the data-model landing page and field, module, component and codelist indexes and detail pages, plus shared static assets. Other page families are not implemented yet, so navigation to them will not resolve in this partial build.
+The site includes the homepage, application types, modules, components, fields, codelists, datasets, views, user needs, justifications, design decisions, examples and submission progress. It also generates downloadable example JSON and a sitemap.
 
 ## Local setup
 
-Activate the existing `spec-viewer` virtual environment, then run:
+Use Python 3.13 to match the dependency locks and GitHub Actions environment. Run these commands from the viewer repository in a dedicated virtual environment:
 
 ```sh
-make init
+python3.13 -m venv .venv
+source .venv/bin/activate
+make tooling
+make sync
 make smoke-test
+make tests
 ```
 
-`SPEC_ROOT` defaults to the sibling `../planning-application-data-specification` checkout and can be overridden with `make smoke-test SPEC_ROOT=/path/to/specification`.
+An existing dedicated `spec-viewer` environment can be used instead. `make sync` removes packages outside the locked requirements, so do not run it in a shared environment.
 
-Keep specification loading and rules in the installed package. Do not import the source repository's `bin` modules or modify Python's search path. Templates, content and static assets are checkout resources at this stage; a standalone distributable viewer wheel is not yet supported.
-
-## Dependency management
-
-`requirements/requirements.in` declares third-party viewer runtime dependencies. Compilation also reads the local specification package's `pyproject.toml`, so its dependencies are locked without duplicating them. Shared rendering uses Jinja, Digital Land Frontend pinned to the baseline Git revision and GOV.UK Frontend Jinja 4.0.0.
-
-`requirements/dev-requirements.in` includes the runtime lock and adds development dependencies. Commit both generated `.txt` files. `make init` installs pip-tools, compiles the locks, syncs the active environment and installs both local packages in editable mode without resolving dependencies again. Run it in the dedicated `spec-viewer` virtual environment because sync removes packages outside the declared requirements.
-
-Use `make requirements` to refresh locks and `make sync` to install the existing locks. `make install` remains an alias for `make init`. `pip check` verifies the local package requirements after installation.
-
-## Specification API smoke test
-
-Activate the `spec-viewer` virtual environment and install the local API:
+`SPEC_ROOT` defaults to the sibling `../planning-application-data-specification` repository. For another source location, pass the same root during installation and building:
 
 ```sh
-make init
+make sync SPEC_ROOT=/path/to/planning-application-data-specification
+make smoke-test SPEC_ROOT=/path/to/planning-application-data-specification
+make build SPEC_ROOT=/path/to/planning-application-data-specification
 ```
 
-From this repository, run:
-
-```sh
-python -I scripts/smoke_test_specification.py /Users/colm/code/mhclg/digital-land/planning-application-data-specification
-```
-
-The test uses the viewer loading layer to load a field, module, application, codelist, guidance, needs and justifications through the installed API. It reports the interpreter, package location, editable installation status and data path. A failure exits with an error. This checks the API connection; full viewer rendering and parity are subsequent work.
-
-## Shared rendering
-
-`spec_viewer.rendering.create_environment()` configures shared templates, filters and base-path-aware links. `copy_static(output_dir)` copies the publishable assets. Field page orchestration lives in `pages/fields.py`, with presentation adapters in `view_models/fields.py`.
-
-The shared layout, components, macros, usage partial and styles originate from specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`. GOV.UK Frontend 6.4.0 is vendored with its existing provenance files. The layout retains the current external Digital Land CSS/JavaScript URLs for parity.
-
-Run shared rendering checks with `python -m pytest -q` after `make init`.
-
-## Reading the specification
-
-Page builders load their inputs once and share the returned package models:
-
-```python
-from spec_viewer.data import load_viewer_data
-
-data = load_viewer_data("/path/to/planning-application-data-specification")
-spec = data.specification
-field = spec.field("description")
-fields = spec.fields.values()
-usage = spec.field_usages("description")
-guidance = spec.guidance(dataset="decision-notice", field="planning-officer-recommendation")
-needs = data.needs
-justifications = data.justifications
-```
-
-Pass the repository root, not its `specification/` subdirectory. The loader uses the installed package's `Specification.load` and `loader.load_needs`; it does not parse source files, change directories or infer a checkout location. Display sorting, links and formatting belong in the view models added with each page family. Missing paths and package loading errors propagate to the caller.
+Pass the repository root, not its `specification/` subdirectory. The source supplies the Python package, specification data, canonical guidance, needs, example JSON, design-decision documents and coverage CSV. Local development currently requires these files; CI fetches its own source checkout. A build-input archive can replace that checkout later.
 
 ## Build and preview
 
@@ -89,12 +36,90 @@ make build
 make serve
 ```
 
-Open `http://localhost:8081/field/`. `make build` writes to the configured repository-root `docs/` directory. Supply `SPEC_ROOT=/path/to/specification` to choose the data checkout, or `BASE_URL=/planning-application-specification-viewer` to build hosted-subpath URLs. The simple preview server serves local-root builds. For alternative output locations use `python -m spec_viewer.build --spec-root /path/to/specification --output /path/to/output`.
+Open [the local site](http://localhost:8081/). The output directory is `docs/` at the viewer repository root, configured in `pyproject.toml`. Override the preview port with `make serve PORT=8082`.
 
-The build does not delete existing output. Use a fresh output directory for migration comparisons; removed source fields can otherwise leave old generated pages behind. It does not publish or push anything.
+For hosted URLs:
 
-## Data model pages
+```sh
+make build BASE_URL=/planning-application-specification-viewer
+```
 
-`pages/data_model.py` renders the data-model landing page and module, component and codelist families. `view_models/containers.py` presents the package's resolved container items and contextual guidance. `view_models/codelists.py` presents codelist metadata, source links and package usage results. Codelist pages preserve the original metadata/source-link presentation without adding value tables.
+The simple preview server expects a local-root build, so run `make build` without `BASE_URL` before using `make serve`.
 
-Index pages only initialise the reusable `index-search.js` component. Application-type, dataset, needs and other page families remain to be migrated, so links to those pages do not resolve in this partial site.
+For a fresh output directory:
+
+```sh
+python -m spec_viewer.build \
+  --spec-root ../planning-application-data-specification \
+  --output /tmp/spec-viewer-preview
+python -m http.server 8081 --directory /tmp/spec-viewer-preview --bind 127.0.0.1
+```
+
+Local builds do not delete old output: removed source records can leave stale pages behind. Use a fresh directory for comparisons. **Do not commit locally generated `docs/` files.** Generated-page commits belong to the GitHub Actions workflow.
+
+## Automated generation
+
+The [render workflow](.github/workflows/render-static-site.yml) runs on non-docs pushes to `main`, daily at 05:17 UTC and manually. It checks out both repositories, installs the locked dependencies and packages, runs tests and the API smoke test, then builds a fresh site. It replaces `docs/`, removes stale generated files and commits only changed output, recording the specification revision.
+
+Daily runs pick up upstream specification changes. A change in the specification repository does not immediately trigger the viewer workflow.
+
+The workflow generates and commits files; it does not deploy GitHub Pages. Its first GitHub run and Pages publishing setup remain to be verified/configured. See [workflow details](WORKFLOW.md) for permissions, concurrency, dependency updates and deployment considerations.
+
+## Repository structure
+
+```text
+src/spec_viewer/
+    build.py          Build orchestration and command-line entry point
+    data.py           Package-backed specification and needs loading
+    rendering.py      Shared templates, filters, URLs and assets
+    pages/            Page-family rendering
+    view_models/      Presentation adapters and project reporting
+ templates/           Page layouts, components and macros
+ content/             Viewer-specific example explanations
+ static/              CSS, JavaScript, fonts and images
+ requirements/        pip-tools inputs and dependency locks
+ tests/               Renderer and reporting tests
+ scripts/             API smoke test
+ docs/                Generated site, committed by CI only
+```
+
+Templates, content and static assets are currently loaded from the viewer checkout. Installing the Python package alone as a wheel is not yet sufficient to run the viewer.
+
+## Data and content boundaries
+
+`load_viewer_data(source)` loads specification models through `Specification.load()` and needs/justifications through the package's separate `loader.load_needs()` API. Page builders share those loaded inputs.
+
+```python
+from spec_viewer.data import load_viewer_data
+
+data = load_viewer_data("/path/to/planning-application-data-specification")
+spec = data.specification
+field = spec.field("description")
+usages = spec.field_usages("description")
+guidance = spec.guidance(dataset="decision-notice", field="planning-officer-recommendation")
+```
+
+Specification rules should live in the package. Some compatibility adapters still interpret package-loaded metadata for application field inheritance, profile/view overrides and need relationships. Combined-application ordering also reads source CSV metadata. These preserve the original output while package improvements are considered.
+
+Project documents are a separate concern: the viewer reads design-decision Markdown directly without exposing it through the specification API. Example explanations live in `content/`; their canonical JSON remains in the source repository. Coverage reporting reads the source volume CSV and uses package application references. No viewer code imports the original repository's `bin` modules or modifies Python's search path.
+
+See [content and reporting ownership](CONTENT-MIGRATION.md) for the full split and the outstanding decision about the progress page's longer-term home.
+
+## Dependencies
+
+`requirements/requirements.in` declares viewer runtime dependencies. `requirements/dev-requirements.in` adds test dependencies. Both generated `.txt` lock files are committed.
+
+- `make tooling` installs pip-tools and build tooling.
+- `make requirements` recompiles the locks, including dependencies declared by the source package's `pyproject.toml`.
+- `make sync` installs the locks and both packages in editable mode, then runs `pip check`.
+- `make init` runs tooling, recompilation and sync; `make install` is an alias.
+
+Use `make init` when intentionally refreshing dependencies, and review the resulting lock changes. CI installs existing locks rather than recompiling them.
+
+## Validation and known issues
+
+`make tests` runs the automated suite. `make smoke-test` checks the installed package, explicit source path and access to fields, modules, applications, codelists, guidance, needs and justifications. It reports package location and editable-install status.
+
+The completed migration was checked against specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`: all 1,038 output files, including 1,005 HTML pages, matched byte-for-byte for root and hosted URLs. This is a frozen-baseline result; current source content can produce different counts. The suite had 39 passing tests at migration completion.
+
+Shared layouts and assets retain their original provenance, including GOV.UK Frontend 6.4.0 and the external Digital Land CSS/JavaScript URLs. Existing behaviour was preserved for parity. [Known frontend bugs](BUGS.md) record the nested-accordion and search-restoration issues.
