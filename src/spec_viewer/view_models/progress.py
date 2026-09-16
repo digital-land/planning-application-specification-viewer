@@ -1,0 +1,239 @@
+"""Legacy project coverage reporting, preserved for migration parity."""
+import csv
+from pathlib import Path
+from typing import Any
+from planning_application_specification.application_types import canonical_application_ref
+INHERITANCE_ONLY_REFS = {"outline", "ldc", "prior-approval"}
+ALWAYS_COVERED_COMBINATIONS = {
+    frozenset({"consent-under-tpo", "notice-trees-in-con-area"})
+}
+
+def parse_application_types(value: str) -> list[str]:
+    if not value:
+        return []
+    normalised = value.replace(";", ",")
+    return [part.strip() for part in normalised.split(",") if part.strip()]
+
+def parse_volume(value: str) -> int:
+    if not value:
+        return 0
+    value = value.strip()
+    if not value:
+        return 0
+    try:
+        return int(float(value))
+    except ValueError:
+        return 0
+
+def is_blank(value: str | None) -> bool:
+    return not (value or "").strip()
+
+def append_note(existing: str, extra: str) -> str:
+    existing = (existing or "").strip()
+    extra = extra.strip()
+    if existing and extra:
+        return f"{existing}; {extra}"
+    return existing or extra
+
+def in_scope_name(row: dict[str, str], app_types: list[str]) -> str:
+    application_name = (row.get("application-name") or "").strip()
+    form_name = (row.get("form-name") or "").strip()
+    stats_name = (row.get("stats-app-name") or "").strip()
+    app_types_display = ",".join(app_types)
+
+    if application_name:
+        return application_name
+    if form_name:
+        return f"Form: {form_name} ({app_types_display})"
+    if stats_name:
+        return f"PP stats: {stats_name}"
+    return f"Application types: {app_types_display}"
+
+def out_scope_name(row: dict[str, str], app_types: list[str]) -> str:
+    application_name = (row.get("application-name") or "").strip()
+    stats_name = (row.get("stats-app-name") or "").strip()
+    app_types_display = ",".join(app_types)
+
+    if application_name:
+        return application_name
+    if stats_name:
+        return f"PP stats: {stats_name}"
+    return f"Application types: {app_types_display}"
+
+def calculate_total_volume(items: list[dict[str, Any]]) -> int:
+    return sum(int(item.get("volume", 0) or 0) for item in items)
+
+def combination_counts_as_covered(
+    app_types: list[str],
+    spec_application_refs: set[str],
+    active_combined_application_refs: set[str],
+) -> bool:
+    if not app_types:
+        return False
+
+    if not all(app_ref in spec_application_refs for app_ref in app_types):
+        return False
+
+    app_type_set = frozenset(app_types)
+    if app_type_set in ALWAYS_COVERED_COMBINATIONS:
+        return True
+
+    canonical_ref = canonical_application_ref(app_types)
+    return canonical_ref in active_combined_application_refs
+
+def evaluate_scope(
+    input_path: Path,
+    inheritance_only_refs: set[str] | None = None,
+    spec_application_refs: set[str] | None = None,
+    active_combined_application_refs: set[str] | None = None,
+) -> dict[str, Any]:
+    inheritance_only_refs = inheritance_only_refs or INHERITANCE_ONLY_REFS
+    spec_application_refs = set() if spec_application_refs is None else spec_application_refs
+    if active_combined_application_refs is None:
+        active_combined_application_refs = set()
+
+    with input_path.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    in_scope: list[dict[str, Any]] = []
+    out_of_scope: list[dict[str, Any]] = []
+
+    for row in rows:
+        app_types = parse_application_types(row.get("applications-types", ""))
+        raw_volume = row.get("2024-total", "")
+        volume = parse_volume(raw_volume)
+        form_name = (row.get("form-name") or "").strip()
+        notes = (row.get("notes") or "").strip()
+
+        has_form = bool(form_name)
+        has_blank_volume = is_blank(raw_volume)
+        has_positive_volume = volume > 0
+        is_inheritance_only = (
+            len(app_types) == 1 and app_types[0] in inheritance_only_refs
+        )
+
+        if is_inheritance_only:
+            notes = append_note(
+                notes,
+                "Inheritance-only application type (included in scope but not a standalone submission type)",
+            )
+
+        item = {
+            "type": "combined" if len(app_types) > 1 else "single",
+            "application-types": app_types,
+            "volume": volume,
+            "notes": notes,
+            "covered-by-spec": False,
+        }
+
+        # Explicit zero-volume rows are out of scope unless inheritance-only.
+        # Form-only inclusion applies when volume is blank/unknown.
+        if has_positive_volume or is_inheritance_only or (has_form and has_blank_volume):
+            if len(app_types) == 1:
+                item["covered-by-spec"] = app_types[0] in spec_application_refs
+            elif app_types:
+                item["covered-by-spec"] = combination_counts_as_covered(
+                    app_types=app_types,
+                    spec_application_refs=spec_application_refs,
+                    active_combined_application_refs=active_combined_application_refs,
+                )
+            item["name"] = in_scope_name(row, app_types)
+            in_scope.append(item)
+        else:
+            item["name"] = out_scope_name(row, app_types)
+            out_of_scope.append(item)
+
+    return {"in_scope": in_scope, "out_of_scope": out_of_scope}
+
+def calculate_scope_summary(
+    input_path: Path,
+    inheritance_only_refs: set[str] | None = None,
+    spec_application_refs: set[str] | None = None,
+    active_combined_application_refs: set[str] | None = None,
+) -> dict[str, Any]:
+    scope = evaluate_scope(
+        input_path=input_path,
+        inheritance_only_refs=inheritance_only_refs,
+        spec_application_refs=spec_application_refs,
+        active_combined_application_refs=active_combined_application_refs,
+    )
+    in_scope = scope["in_scope"]
+    out_of_scope = scope["out_of_scope"]
+
+    total_rows = len(in_scope) + len(out_of_scope)
+    total_volume = calculate_total_volume(in_scope + out_of_scope)
+    in_scope_volume = calculate_total_volume(in_scope)
+    covered_volume = calculate_total_volume(
+        [item for item in in_scope if item.get("covered-by-spec")]
+    )
+    completeness_pct = (covered_volume / total_volume * 100) if total_volume else 0.0
+
+    return {
+        "input": str(input_path),
+        "total_rows": total_rows,
+        "in_scope_rows": len(in_scope),
+        "out_of_scope_rows": len(out_of_scope),
+        "total_2024_volume": total_volume,
+        "in_scope_2024_volume": in_scope_volume,
+        "covered_2024_volume": covered_volume,
+        "completeness_pct": round(completeness_pct, 1),
+    }
+
+def sort_scope_items_by_volume(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted(
+        items, key=lambda i: (-int(i.get("volume", 0) or 0), i.get("name", ""))
+    )
+
+def format_scope_item_label(item: dict[str, Any]) -> str:
+    app_types = ",".join(item.get("application-types", []))
+    name = item.get("name", "")
+    trailing = f"({app_types})"
+    if app_types and name.endswith(trailing):
+        name = name[: -len(trailing)].rstrip()
+    return f"{name} ({app_types})"
+
+def build_progress_view_model(
+    input_path: Path,
+    inheritance_only_refs: set[str] | None = None,
+    spec_application_refs: set[str] | None = None,
+    active_combined_application_refs: set[str] | None = None,
+) -> dict[str, Any]:
+    scope = evaluate_scope(
+        input_path=input_path,
+        inheritance_only_refs=inheritance_only_refs,
+        spec_application_refs=spec_application_refs,
+        active_combined_application_refs=active_combined_application_refs,
+    )
+    summary = calculate_scope_summary(
+        input_path=input_path,
+        inheritance_only_refs=inheritance_only_refs,
+        spec_application_refs=spec_application_refs,
+        active_combined_application_refs=active_combined_application_refs,
+    )
+
+    in_scope = scope["in_scope"]
+    covered = sort_scope_items_by_volume(
+        [item for item in in_scope if item.get("covered-by-spec")]
+    )
+    not_covered = sort_scope_items_by_volume(
+        [item for item in in_scope if not item.get("covered-by-spec")]
+    )
+
+    def to_row(item: dict[str, Any]) -> dict[str, Any]:
+        refs = item.get("application-types", [])
+        return {
+            "name": item.get("name", ""),
+            "refs": refs,
+            "label": format_scope_item_label(item),
+            "volume": int(item.get("volume", 0) or 0),
+            "covered_by_spec": bool(item.get("covered-by-spec")),
+            "type": item.get("type", "single"),
+            "notes": item.get("notes", ""),
+        }
+
+    return {
+        "summary": summary,
+        "covered_by_spec": [to_row(item) for item in covered],
+        "not_covered_by_spec": [to_row(item) for item in not_covered],
+        "meta": {},
+    }
