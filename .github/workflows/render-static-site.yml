@@ -1,0 +1,93 @@
+name: Render static specification site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+  schedule:
+    - cron: '17 5 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-static-site
+  cancel-in-progress: false
+
+jobs:
+  render:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: viewer
+    env:
+      SPEC_ROOT: ../specification
+      BASE_URL: /planning-application-specification-viewer
+    steps:
+      - name: Check out viewer
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: viewer
+
+      - name: Check out specification and project content
+        uses: actions/checkout@v6
+        with:
+          repository: digital-land/planning-application-data-specification
+          ref: main
+          path: specification
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies and both packages
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+          .venv/bin/python -m pip install -r requirements/dev-requirements.txt
+          .venv/bin/python -m pip install --no-deps -e "$SPEC_ROOT" -e .
+          .venv/bin/python -m pip check
+
+      - name: Test and check the specification API
+        run: |
+          make tests PYTHON=.venv/bin/python
+          make smoke-test PYTHON=.venv/bin/python
+
+      - name: Build into a fresh directory
+        run: |
+          output_dir=$(mktemp -d "$RUNNER_TEMP/viewer-site.XXXXXX")
+          .venv/bin/python -m spec_viewer.build --spec-root "$SPEC_ROOT" --output "$output_dir" --base-url "$BASE_URL"
+          test -s "$output_dir/index.html"
+          test -s "$output_dir/submissions/progress/index.html"
+          # The report includes its input path. Keep that stable across runners.
+          .venv/bin/python - "$output_dir/submissions/progress/data.json" <<'PYTHON'
+          import json
+          import sys
+          from pathlib import Path
+          path = Path(sys.argv[1])
+          data = json.loads(path.read_text())
+          data["summary"]["input"] = "bin/admin_data/2024-application-volumes.csv"
+          path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+          PYTHON
+          mkdir -p docs
+          rsync -a --delete "$output_dir/" docs/
+
+      - name: Commit generated changes only
+        run: |
+          git add --all -- docs
+          if git diff --cached --quiet -- docs; then
+            echo "Generated site is unchanged."
+            exit 0
+          fi
+          spec_revision=$(git -C "$SPEC_ROOT" rev-parse HEAD)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Render static site [skip ci]" -m "Specification revision: $spec_revision"
+          git push origin HEAD:main
