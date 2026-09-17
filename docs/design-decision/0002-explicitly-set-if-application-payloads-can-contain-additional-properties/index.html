@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Design decision 0002</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/design-decision">Design decisions</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Explicitly set if application payloads can contain additional properties</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Design decision</span>
+    <h1 class="govuk-heading-xl">Explicitly set if application payloads can contain additional properties</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Decision</dt>
+        <dd class="govuk-summary-list__value">0002</dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Status</dt>
+        <dd class="govuk-summary-list__value">Proposed</dd>
+      </div>
+      
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date</dt>
+        <dd class="govuk-summary-list__value">2025-12-16</dd>
+      </div>
+      
+    </dl>
+
+    <div class="app-prose">
+      <p class="govuk-body"><strong>Context:</strong><br/>
+When generating JSON Schemas from the declarative application definitions, we need a clear and explicit way to control whether application payloads may include properties beyond those defined by the specification.  </p>
+<p class="govuk-body">By default, JSON Schema allows additional properties unless explicitly restricted. This implicit behaviour is easy to miss and can lead to inconsistent validation, unclear contracts with suppliers, and accidental data drift over time.  </p>
+<p class="govuk-body">We also need a simple mechanism that proovides flexibility so that some application types can be strictly closed if desired, while others can remain extensible, without introducing premature complexity into the declarative model.</p>
+<p class="govuk-body"><strong>Decision:</strong><br/>
+We will introduce a top-level attribute on application definitions named <code class="app-code">allow-additional-properties</code>.  </p>
+<p class="govuk-body">This flag will be used by schema generation tooling to explicitly set the <code class="app-code">additionalProperties</code> behaviour on the root JSON Schema for that application type.</p>
+<p class="govuk-body"><strong>Rationale:</strong><br/>
+Placing the flag at the application level makes the extensibility of each application type explicit, intentional, and easy to reason about. It reflects the fact that this is a rule about the <em>overall shape of the submission payload</em>, rather than a property of any individual field or module.  </p>
+<p class="govuk-body">Using a simple boolean keeps the declarative model approachable and avoids over-engineering at an early stage. It allows us to:
+- make schema openness a conscious design choice
+- generate schemas that are explicit rather than relying on JSON Schema defaults
+- vary strictness between application types as desired</p>
+<p class="govuk-body">This approach supports clearer governance, better validation behaviour, and more predictable downstream use of the data.</p>
+<p class="govuk-body"><strong>Alternatives Considered:</strong><br/>
+- Relying on JSON Schema defaults → rejected because openness would be implicit and easy to overlook.<br/>
+- Defining extensibility only at module level → rejected for now as it does not address top-level payload shape and adds complexity early.<br/>
+- Introducing a richer extensibility model (e.g. open / closed / namespaced modes) → deferred to a later iteration once real extension needs emerge.</p>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+
+    <h2 class="govuk-heading-m">Help improve this design decision</h2>
+    <p class="govuk-body">To help keep this design decision useful and up to date, you can raise feedback on GitHub.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/issues/new?title=%5B0002%5D%20Feedback%20on%20design%20decision%3A%20Explicitly%20set%20if%20application%20payloads%20can%20contain%20additional%20properties">Raise feedback on GitHub for decision 0002</a></li>
+    </ul>
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

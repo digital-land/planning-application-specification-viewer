@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Design decision 0017</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/design-decision">Design decisions</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Do not duplicate dates across decision-stage datasets</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Design decision</span>
+    <h1 class="govuk-heading-xl">Do not duplicate dates across decision-stage datasets</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Decision</dt>
+        <dd class="govuk-summary-list__value">0017</dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Status</dt>
+        <dd class="govuk-summary-list__value">Proposed</dd>
+      </div>
+      
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date</dt>
+        <dd class="govuk-summary-list__value">2026-05-28</dd>
+      </div>
+      
+    </dl>
+
+    <div class="app-prose">
+      <h3 class="govuk-heading-m" id="context">Context</h3>
+<p class="govuk-body">The specification has datasets that record the main facts and characteristics about a planning application and its decision.</p>
+<p class="govuk-body">Some of those facts are dated events that change the application’s state. For example:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">planning-application.received-date</code> records when the planning authority received the application and is when the statutory time period for a planning authority to validate an application begins</li>
+<li><code class="app-code">decision-notice.decision-date</code> records when the decision was made and decision notice issued, and carries legal significance</li>
+</ul>
+<p class="govuk-body">The specification also has <code class="app-code">planning-permission-timeline</code>, which records dated events in the processing of a planning application.</p>
+<p class="govuk-body">There is some crossover here and a decision needs to be made about where to store certain dates.</p>
+<p class="govuk-body">If the same date is recorded both as a primary dataset field and as a timeline event, the specification duplicates the same fact in two places. That creates scope for conflicting values and uncertainty about which record is authoritative.</p>
+<h3 class="govuk-heading-m" id="decision">Decision</h3>
+<p class="govuk-body">Each fact has one canonical home. </p>
+<p class="govuk-body">Keep a date on the dataset whose record it describes when it is a core property of that record. </p>
+<p class="govuk-body">Use <code class="app-code">planning-permission-timeline</code> for process events that need their own record, can recur or need event-specific context.</p>
+<p class="govuk-body">Do not store the same fact in both places.</p>
+<h3 class="govuk-heading-m" id="rationale">Rationale</h3>
+<p class="govuk-body">Keeping core dates on the dataset that owns the record:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>means key state of the item can be understood using a single dataset. For example, any planning application record with a <code class="app-code">withdrawn-date</code> can be considered withdrawn</li>
+<li>reduces the risk of the same date being recorded differently in two places</li>
+<li>keeps process events in the timeline and fundamental record properties on their owning datasets</li>
+<li>still allows services to display a combined timeline by deriving it from multiple datasets where needed</li>
+</ul>
+<h3 class="govuk-heading-m" id="consequences">Consequences</h3>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">application-received</code> should not be a <code class="app-code">permission-process-event</code> because <code class="app-code">received-date</code> is already recorded on <code class="app-code">planning-application</code>.</li>
+<li><code class="app-code">decision-date</code> should remain on <code class="app-code">decision-notice</code> and should not be duplicated as a timeline event.</li>
+<li><code class="app-code">withdrawn-date</code> should be recorded on <code class="app-code">planning-application</code> and should not be duplicated as a timeline event, because withdrawal is a fundamental fact about the application rather than a repeatable process event.</li>
+<li>a complete chronological timeline will need to be treated as a derived view. It may combine dates and events from <code class="app-code">planning-application</code>, <code class="app-code">planning-permission-timeline</code>, <code class="app-code">decision-notice</code> and other decision-stage datasets without duplicating those facts in the canonical datasets.</li>
+<li><code class="app-code">application-submitted</code> remains a <code class="app-code">permission-process-event</code>. It records submission by the applicant, which is distinct from receipt by the planning authority recorded in received-date.</li>
+</ul>
+<h3 class="govuk-heading-m" id="alternatives-considered">Alternatives considered</h3>
+<ul class="govuk-list govuk-list--bullet">
+<li>Duplicate first-class dates in <code class="app-code">planning-permission-timeline</code> -&gt; rejected because it creates two authoritative-looking places for the same fact, increasing the risk of conflicting values without improving the canonical data model.</li>
+<li>Remove first-class dates from their owning datasets and model all dates only as events -&gt; rejected because dates such as <code class="app-code">received-date</code> and <code class="app-code">decision-date</code> are fundamental properties of their records and should be easy to find.</li>
+</ul>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+
+    <h2 class="govuk-heading-m">Help improve this design decision</h2>
+    <p class="govuk-body">To help keep this design decision useful and up to date, you can raise feedback on GitHub.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/issues/new?title=%5B0017%5D%20Feedback%20on%20design%20decision%3A%20Do%20not%20duplicate%20dates%20across%20decision-stage%20datasets">Raise feedback on GitHub for decision 0017</a></li>
+    </ul>
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

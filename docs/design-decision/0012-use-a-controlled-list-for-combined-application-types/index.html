@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Design decision 0012</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/design-decision">Design decisions</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Use a controlled list for combined application types</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Design decision</span>
+    <h1 class="govuk-heading-xl">Use a controlled list for combined application types</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Decision</dt>
+        <dd class="govuk-summary-list__value">0012</dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Status</dt>
+        <dd class="govuk-summary-list__value">Proposed</dd>
+      </div>
+      
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date</dt>
+        <dd class="govuk-summary-list__value">2026-04-14</dd>
+      </div>
+      
+    </dl>
+
+    <div class="app-prose">
+      <p class="govuk-body"><strong>Context:</strong> </p>
+<p class="govuk-body">Some planning application forms cover more than one application type in a single submission, for example householder planning permission and listed building consent.</p>
+<p class="govuk-body">We needed to decide whether the specification should allow application types to be combined freely, or whether only a limited set of combinations should be supported.</p>
+<p class="govuk-body">DM policy advice was that these cases are linked because the applicant would need the separate connected Planning Acts consent in order to implement the development.</p>
+<p class="govuk-body">We also needed a mechanism that avoids duplicating large application definitions for each recognised combination.</p>
+<p class="govuk-body"><strong>Decision:</strong> </p>
+<ul class="govuk-list govuk-list--bullet">
+<li>Treat combined applications as a controlled list of policy-approved combinations.  </li>
+<li>Store that controlled list in <code class="app-code">specification/combined-application-types.csv</code>.  </li>
+<li>Keep single application types as the canonical source definitions.  </li>
+<li>Derive a combined application dynamically from the member application types rather than hand-authoring combined records in <code class="app-code">specification/application/</code>.  </li>
+<li>Resolve combinations only when explicitly requested.  </li>
+<li>Reject combinations that are not active in the controlled list.  </li>
+<li>Treat module ordering as out of scope for the specification.  </li>
+</ul>
+<p class="govuk-body"><strong>Rationale:</strong> </p>
+<p class="govuk-body">Using a controlled list:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>matches the policy basis that these are connected-consent cases, not an open-ended composition feature</li>
+<li>keeps policy control over which combinations are recognised</li>
+<li>avoids creating and maintaining separate full application definitions for each allowed combination</li>
+<li>lets the specification reuse existing single application definitions and shared modules</li>
+<li>keeps ordering out of the core model, where it is better handled by downstream UX or implementation choices</li>
+</ul>
+<p class="govuk-body">This gives a clear policy boundary with low duplication and predictable runtime behaviour.</p>
+<p class="govuk-body"><strong>Consequences:</strong> </p>
+<ul class="govuk-list govuk-list--bullet">
+<li>Combined application support depends on an explicit row being present and active in <code class="app-code">combined-application-types.csv</code>.  </li>
+<li>Tooling must normalise member order before lookup, for example <code class="app-code">lbc;hh</code> resolves as <code class="app-code">hh;lbc</code>.  </li>
+<li>Combined applications derive a deduped union of member modules and merged application-level items.  </li>
+<li><code class="app-code">application-type</code> applicability checks for combined selections use OR semantics across the component application types.   </li>
+</ul>
+<p class="govuk-body"><strong>Alternatives considered:</strong> </p>
+<ul class="govuk-list govuk-list--bullet">
+<li>Allow any sensible combination of application types -&gt; rejected because it does not match the policy framing and would weaken control over what counts as a valid combined application.  </li>
+<li>Hand-author each combined application in <code class="app-code">specification/application/</code> -&gt; rejected because it duplicates the canonical single application definitions and increases maintenance overhead.  </li>
+<li>Include ordering rules in the specification -&gt; rejected because ordering is a presentation or implementation concern, not part of the core combination model.</li>
+</ul>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+
+    <h2 class="govuk-heading-m">Help improve this design decision</h2>
+    <p class="govuk-body">To help keep this design decision useful and up to date, you can raise feedback on GitHub.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/issues/new?title=%5B0012%5D%20Feedback%20on%20design%20decision%3A%20Use%20a%20controlled%20list%20for%20combined%20application%20types">Raise feedback on GitHub for decision 0012</a></li>
+    </ul>
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

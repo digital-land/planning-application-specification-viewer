@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Module site-details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/" aria-current="page">
+                    
+                
+                  <strong class="govuk-service-navigation__active-fallback">Data model</strong>
+                
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/module">Module</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Site details</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">module: site-details</span>
+    <h1 class="govuk-heading-xl">Site details</h1>
+    <p class="govuk-body-l">Where the proposed development will be built.</p>
+    
+
+
+
+    
+      <h2 class="govuk-heading-l">Fields</h2>
+      
+<dl class="govuk-summary-list">
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        <div class="govuk-body govuk-!-font-weight-bold">Site locations</div>
+        <div class="govuk-hint govuk-!-margin-bottom-0"><code>site-locations</code></div>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">Details of the sites where development or works are proposed</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Required</dt>
+  <dd class="govuk-summary-list__value"><code>True</code></dd>
+</div>
+
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>object</code></dd>
+</div>
+
+          
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Expected number</dt>
+  <dd class="govuk-summary-list__value"><code>1 or more</code></dd>
+</div>
+
+        </dl>
+
+        
+
+
+
+        
+          
+
+<div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-site-locations-1-0">
+  
+    
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="field-component-site-locations-1-0-heading-1">
+          Site location component
+        </span>
+      </h2>
+      
+    </div>
+    <div id="field-component-site-locations-1-0-content-1" class="govuk-accordion__section-content">
+    
+      <dl class="govuk-summary-list">
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Site boundary</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>geometry</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">A polygon or multipolygon boundary</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>multipolygon</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Site address</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>site-address</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">A structured object containing an address used to describe a development site.</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>object</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+                
+
+      <div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-site-address-2-1">
+        
+          
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="field-component-site-address-2-1-heading-1">
+                Site address component
+              </span>
+            </h2>
+            
+          </div>
+          <div id="field-component-site-address-2-1-content-1" class="govuk-accordion__section-content">
+          
+            <dl class="govuk-summary-list">
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Address Text</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>address-text</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Text representation of an address or site</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>True</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Postcode</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>postcode</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Postcode for a contact address or site</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>False</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">UPRNs</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>uprns</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Unique Property Reference Numbers (UPRNs) for existing premises within a site boundary</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>False</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1 or more</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">USRNs</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>usrns</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Unique Street Reference Numbers (USRNs) associated with the site</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>False</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1 or more</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+            </dl>
+          
+          </div>
+        </div>
+
+        
+      </div>
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Easting</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>easting</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Easting coordinate in British National Grid (EPSG:27700)</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>decimal</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Northing</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>northing</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Northing coordinate in British National Grid (EPSG:27700)</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>decimal</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Latitude</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>latitude</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Latitude coordinate in WGS84 (EPSG:4326)</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>latitude</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Longitude</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>longitude</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Longitude coordinate in WGS84 (EPSG:4326)</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>longitude</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+      </dl>
+    
+    </div>
+  </div>
+
+  
+</div>
+
+        
+      </dd>
+    </div>
+  
+</dl>
+
+    
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+      <h2 class="govuk-heading-l">Rules</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        
+          <li>{&#39;description&#39;: &#39;At least one site-location must be provided for tree works applications&#39;, &#39;field&#39;: &#39;site-locations&#39;, &#39;require&#39;: {&#39;min&#39;: 1}, &#39;type&#39;: &#39;count-constraint&#39;, &#39;when&#39;: {&#39;application-type&#39;: {&#39;in&#39;: [&#39;tree-works&#39;]}}}</li>
+        
+          <li>{&#39;description&#39;: &#39;Exactly one site-location for all other applications types&#39;, &#39;field&#39;: &#39;site-locations&#39;, &#39;require&#39;: {&#39;exact&#39;: 1}, &#39;type&#39;: &#39;count-constraint&#39;, &#39;when&#39;: {&#39;application-type&#39;: {&#39;not&#39;: [&#39;tree-works&#39;]}}}</li>
+        
+          <li>If easting is provided, northing must also be provided and vice versa</li>
+        
+          <li>If latitude is provided, longitude must also be provided and vice versa</li>
+        
+          <li>Each site-location must include a site boundary and site address</li>
+        
+          <li>The planning authority must translate site information received on a paper form into the required structured site-location data, including the site boundary</li>
+        
+          <li>Site boundary must be valid WKT</li>
+        
+          <li>UPRNs must be valid format</li>
+        
+          <li>USRNs must be 8-digit strings</li>
+        
+          <li>Post code must be valid UK format</li>
+        
+      </ul>
+    
+
+    
+  
+  
+  
+  
+  
+  <h2 class="govuk-heading-l govuk-!-margin-top-9">Where this is used</h2>
+  
+  
+    <h3 class="govuk-heading-m">Application types</h3>
+    <p class="govuk-body">This module is used in 28 application types:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/advertising">Advertising consent</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/advertising;full">Full planning permission and consent to display advertisements</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/approval-condition">Approval of details reserved by condition</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/cho-commercial-to-dwh">Prior approval: Commercial, business and service use to dwellinghouses</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area">Planning permission for relevant demolition in a conservation area</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area;full">Full planning permission and demolition in a conservation area</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area;hh">Householder planning permission and demolition in a conservation area</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/extraction-oil-gas">Development relating to the onshore extraction of oil and gas</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/full">Full planning permission</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/full;lbc">Full planning permission and listed building consent</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/hedgerow-removal">Hedgerow removal notice</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/hh">Householder planning application</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/hh;lbc">Householder planning permission and listed building consent</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/lbc">Listed building consent</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/lbc;ldc-proposed-work-lb">Certificate of lawfulness of proposed works to a listed building and listed building consent</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/ldc-existing-use">Lawful development certificate: Existing use or development</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/ldc-proposed-work-lb">Lawful development certficate: Proposed Work to a Listed Building</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/ldc-prospective-use">Lawful development certificate: Proposed use or development</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/non-material-amendment">Non-material amendment (S96a)</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/outline-all">Outline Planning Permission with All Matters Reserved</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/outline-some">Outline Planning Permission with Some Matters Reserved</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/pa-build-agri-forest">Prior approval: Agricultural or forestry building development</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/pa-extension">Prior approval: Larger Home Extension</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/pa-storey">Prior approval: Additional storeys</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/pip">Permission in principle</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/reserved-matters">Reserved matters</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/s73">Removal or variation of a condition following grant of planning permission</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/technical-details-consent">Technical details consent</a>
+          
+        </li>
+      
+    </ul>
+  
+  
+  
+  
+  
+  
+
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

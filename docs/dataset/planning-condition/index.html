@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Dataset planning-condition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/" aria-current="page">
+                    
+                
+                  <strong class="govuk-service-navigation__active-fallback">Datasets</strong>
+                
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/dataset">Dataset</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">planning condition</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class='govuk-grid-row'>
+  <div class='govuk-grid-column-full'>
+    <span class="govuk-caption-xl">Dataset</span>
+    <h1 class="govuk-heading-xl">planning condition</h1>
+  </div>
+</div>
+  
+<div class='govuk-grid-row'>
+  <div class='govuk-grid-column-full'>
+    <p class="govuk-body-l">Records of individual planning conditions</p>
+    
+
+
+
+  
+    <h2 class="govuk-heading-l">Fields</h2>
+    <dl class="govuk-summary-list govuk-!-margin-top-3">
+      
+        <div class="govuk-summary-list__row" id="reference">
+          <dt class="govuk-summary-list__key">Reference</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The <a class="govuk-link" href="#reference">reference</a> for the planning condition</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>reference</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-052">dd-need-052</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="name">
+          <dt class="govuk-summary-list__key">Name</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">A plain-language label for the condition</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>name</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>SHOULD</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use a short, plain-language label that helps people recognise the condition without reading its full text.</p>
+<p class="govuk-body">Use a name that describes the subject of the condition. Do not use a condition number, reference or the full condition text as the name.</p>
+<h3 class="govuk-heading-m" id="examples">Examples</h3>
+<h4 class="govuk-heading-s" id="good">Good</h4>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">Approved Plans</code></li>
+<li><code class="app-code">Construction hours</code></li>
+<li><code class="app-code">External materials</code></li>
+<li><code class="app-code">Contaminated Land</code></li>
+</ul>
+<h4 class="govuk-heading-s" id="avoid">Avoid</h4>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">Condition 1</code></li>
+<li><code class="app-code">Reason</code></li>
+<li>a blank name</li>
+<li>the full condition text</li>
+</ul>
+  </div>
+</details>
+
+
+            
+            <p class="app-secondary-text">No needs satisfied by this field.</p>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="description">
+          <dt class="govuk-summary-list__key">Description</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The text of the condition that must be met</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>description</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-042">dd-need-042</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-104">dd-need-104</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-105">dd-need-105</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="reason">
+          <dt class="govuk-summary-list__key">Reason</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">An explanation of why the condition was imposed</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>reason</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Record the authority's published reason for imposing the condition. Keep this separate from the text of the condition itself.</p>
+<p class="govuk-body">Use the reason given in the decision notice. Do not create, summarise or infer a reason when one has not been published.</p>
+<p class="govuk-body">Examples from the <a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/blob/main/data/analysis/applications/datasets/planning-condition.csv">sample planning-condition data</a> include:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">For the avoidance of doubt and in the interests of proper planning.</code></li>
+<li><code class="app-code">To ensure that satisfactory refuse and recycling facilities for construction, excavation and demolition are provided for each phase of the development. (Policies 5.17 of the London Plan and EN7 of the Lambeth Local Plan 2015)</code></li>
+<li><code class="app-code">To safeguard future users or occupiers of this site and the wider environment from irreversible risks associated with the contaminants which are present.</code></li>
+</ul>
+<p class="govuk-body">The complete published reason may include references to relevant legislation or development plan policies. Retain these as part of the reason.</p>
+  </div>
+</details>
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-036">dd-need-036</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="organisation">
+          <dt class="govuk-summary-list__key">Organisation</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The organisation that maintains the condition clause</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>organisation</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>enum</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Allowed values</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/organisations">Organisations codelist</a></dd>
+</div>
+
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Record the organisation that maintains the condition clause. For an authority's standard or locally authored condition, use that planning authority's organisation identifier.</p>
+<p class="govuk-body">This is not necessarily the organisation that requested the condition in a particular case. Record that organisation as <code class="app-code">requested-by</code> on the related <code class="app-code">decision-condition</code> record.</p>
+  </div>
+</details>
+
+
+            
+            <p class="app-secondary-text">No needs satisfied by this field.</p>
+            
+          </dd>
+        </div>
+      
+    </dl>
+  
+
+    <h2 class="govuk-heading-l" id="examples">Examples</h2>
+<div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds"><h3 class="govuk-heading-m" id="three-year-commencement-condition">Three-year commencement condition</h3>
+<p class="govuk-body">This example uses a short name to identify the condition and records the condition text separately from the authority's reason for imposing it.</p>
+</div></div><div class="govuk-tabs govuk-!-margin-bottom-6" data-module="govuk-tabs">
+<h3 class="govuk-tabs__title">Example formats</h3>
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+<a class="govuk-tabs__tab" href="#commencement-three-years-table">Table</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#commencement-three-years-json">JSON</a>
+</li>
+</ul>
+<div class="govuk-tabs__panel" id="commencement-three-years-table">
+<h4 class="govuk-heading-s">Table</h4>
+<div class="app-example-table">
+<table class="govuk-table">
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="col">Field</th>
+<th class="govuk-table__header" scope="col">Value</th>
+</tr>
+</thead>
+<tbody class="govuk-table__body">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reference</code></th>
+<td class="govuk-table__cell">COM03</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>name</code></th>
+<td class="govuk-table__cell">Commencement - 3 Years</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>description</code></th>
+<td class="govuk-table__cell">The development to which this permission relates must be begun not later than the expiration of three years beginning with the date of this permission.</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reason</code></th>
+<td class="govuk-table__cell">This condition is required to be imposed by Section 91 of the Town and Country Planning Act 1990 (as amended).</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>organisation</code></th>
+<td class="govuk-table__cell">local-authority:CMD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="commencement-three-years-json">
+<h4 class="govuk-heading-s">JSON</h4>
+<pre class="app-example-json"><code>{
+  "reference": "COM03",
+  "name": "Commencement - 3 Years",
+  "description": "The development to which this permission relates must be begun not later than the expiration of three years beginning with the date of this permission.",
+  "reason": "This condition is required to be imposed by Section 91 of the Town and Country Planning Act 1990 (as amended).",
+  "organisation": "local-authority:CMD"
+}</code></pre>
+</div>
+</div>
+<div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds"><h3 class="govuk-heading-m" id="condition-requested-by-another-organisation">Condition requested by another organisation</h3>
+<p class="govuk-body">This condition clause is maintained by the planning authority. Its use on a particular decision can separately record the organisation that requested it.</p>
+</div></div><div class="govuk-tabs govuk-!-margin-bottom-6" data-module="govuk-tabs">
+<h3 class="govuk-tabs__title">Example formats</h3>
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+<a class="govuk-tabs__tab" href="#contaminated-land-table">Table</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#contaminated-land-json">JSON</a>
+</li>
+</ul>
+<div class="govuk-tabs__panel" id="contaminated-land-table">
+<h4 class="govuk-heading-s">Table</h4>
+<div class="app-example-table">
+<table class="govuk-table">
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="col">Field</th>
+<th class="govuk-table__header" scope="col">Value</th>
+</tr>
+</thead>
+<tbody class="govuk-table__body">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reference</code></th>
+<td class="govuk-table__cell">ENV01</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>name</code></th>
+<td class="govuk-table__cell">Contaminated land</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>description</code></th>
+<td class="govuk-table__cell">No development shall commence until a scheme to assess and remediate land contamination has been submitted to and approved in writing by the planning authority.</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reason</code></th>
+<td class="govuk-table__cell">To ensure that contamination risks to people and controlled waters are identified and addressed.</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>organisation</code></th>
+<td class="govuk-table__cell">local-authority:CMD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contaminated-land-json">
+<h4 class="govuk-heading-s">JSON</h4>
+<pre class="app-example-json"><code>{
+  "reference": "ENV01",
+  "name": "Contaminated land",
+  "description": "No development shall commence until a scheme to assess and remediate land contamination has been submitted to and approved in writing by the planning authority.",
+  "reason": "To ensure that contamination risks to people and controlled waters are identified and addressed.",
+  "organisation": "local-authority:CMD"
+}</code></pre>
+</div>
+</div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">Needs satisfied by this dataset</h2>
+    <p class="govuk-body">Datasets should only be included in the specification if they satisfy user needs.</p>
+    
+        
+          <details class="govuk-details govuk-!-margin-bottom-3">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">dd-need-002 fully satisfied, confidence medium</span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">Linked need: <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-002">dd-need-002</a></p>
+              <p class="govuk-body">Justification record: just-0015</p>
+              
+                <p class="govuk-body">This dataset is required to satisfy this need.</p>
+              
+              
+                <div class="govuk-body"><p>Creating a dedicated planning condition dataset enables conditions to be recorded in a structured, manageable way so they can be tracked and discharged consistently.</p></div>
+              
+            </div>
+          </details>
+        
+    
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

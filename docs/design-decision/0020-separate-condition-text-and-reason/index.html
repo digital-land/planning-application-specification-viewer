@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Design decision 0020</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/design-decision">Design decisions</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Record condition text and reason separately</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Design decision</span>
+    <h1 class="govuk-heading-xl">Record condition text and reason separately</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Decision</dt>
+        <dd class="govuk-summary-list__value">0020</dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Status</dt>
+        <dd class="govuk-summary-list__value">Proposed</dd>
+      </div>
+      
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date</dt>
+        <dd class="govuk-summary-list__value">2026-08-18</dd>
+      </div>
+      
+    </dl>
+
+    <div class="app-prose">
+      <h3 class="govuk-heading-m" id="context">Context</h3>
+<p class="govuk-body">Planning decision notices commonly present a condition as two related but distinct pieces of information:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>the condition text, which states what must be done or restricted; and</li>
+<li>the reason, which explains why the condition was imposed.</li>
+</ul>
+<p class="govuk-body">For example:</p>
+<blockquote>
+<p class="govuk-body">The development must be carried out in accordance with the approved plans.</p>
+<p class="govuk-body"><strong>Reason:</strong> For the avoidance of doubt and in the interests of proper planning.</p>
+</blockquote>
+<p class="govuk-body">Some planning systems store or render both parts in one text field. However, evidence shows that a combined source value may still contain a clearly labelled reason, often introduced by <code class="app-code">Reason:</code>. This is an implementation characteristic and does not make the two pieces of information semantically equivalent.</p>
+<p class="govuk-body">This decision responds to <a class="govuk-link" href="../../user-needs/need/dd-need-036.md">user need <code class="app-code">dd-need-036</code></a>: applicants and developers need to see the reasons behind each condition so they can understand why it was imposed and how it relates to policy or the proposal. <a class="govuk-link" href="../../user-needs/justification/just-0019.md">Justification <code class="app-code">just-0019</code></a> records how the current specification satisfies that need.</p>
+<h3 class="govuk-heading-m" id="decision">Decision</h3>
+<p class="govuk-body">Record the condition text and reason as separate data items.</p>
+<p class="govuk-body">The condition text records the requirement that must be met. The reason records the justification for imposing that condition. It does not record a reason for refusing the planning application.</p>
+<h3 class="govuk-heading-m" id="rationale">Rationale</h3>
+<p class="govuk-body">Keeping the two values separate:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>answers two different questions: what is required, and why it is required;</li>
+<li>makes the justification for a condition visible and supports scrutiny of whether it is necessary, relevant, enforceable and reasonable;</li>
+<li>supports search and analysis of requirements and their policy or site-specific justifications independently;</li>
+<li>allows common condition wording to be compared or reused without assuming that its justification is identical in every case; and</li>
+<li>reflects the explicit condition-and-reason structure commonly presented in decision notices.</li>
+</ul>
+<p class="govuk-body">Both values may contain standard and case-specific material. Condition wording may include application-specific plans, dates or substitutions. A reason may use a standard rationale, cite local policy or explain a particular impact of the development. Separating them does not imply that one is always reusable and the other is always bespoke.</p>
+<h3 class="govuk-heading-m" id="consequences">Consequences</h3>
+<ul class="govuk-list govuk-list--bullet">
+<li>Publishers should map a reliably labelled reason separately even where a source system stores condition text and reason together.</li>
+<li>Publishers should not copy the same combined text into both fields. If the boundary cannot be identified reliably, they should report the reason as unavailable rather than invent a split.</li>
+<li>The exact text and reason issued with a decision must remain recoverable as authoritative information.</li>
+</ul>
+<h3 class="govuk-heading-m" id="alternatives-considered">Alternatives considered</h3>
+<ul class="govuk-list govuk-list--bullet">
+<li>Store condition text and reason as one value -&gt; rejected because it combines the requirement with its justification, limiting reuse, scrutiny and analysis even when the source document clearly distinguishes them.</li>
+<li>Treat the reason as unstructured supporting documentation only -&gt; rejected because reasons are routinely presented as part of the issued condition and have value as structured data.</li>
+</ul>
+<h3 class="govuk-heading-m" id="unresolved-questions">Unresolved questions</h3>
+<p class="govuk-body">This decision establishes the semantic separation only. It does not settle whether either value should ultimately be held on <code class="app-code">planning-condition</code>, <code class="app-code">decision-condition</code> or another future representation of an imposed condition.</p>
+<p class="govuk-body">For now, <code class="app-code">description</code> and <code class="app-code">reason</code> remain on <code class="app-code">planning-condition</code>. Further work will establish whether <code class="app-code">planning-condition</code> represents a reusable clause or an exact condition as imposed through a particular decision, and whether the reason justifies a general clause or its use in that particular case.</p>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+
+    <h2 class="govuk-heading-m">Help improve this design decision</h2>
+    <p class="govuk-body">To help keep this design decision useful and up to date, you can raise feedback on GitHub.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/issues/new?title=%5B0020%5D%20Feedback%20on%20design%20decision%3A%20Record%20condition%20text%20and%20reason%20separately">Raise feedback on GitHub for decision 0020</a></li>
+    </ul>
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

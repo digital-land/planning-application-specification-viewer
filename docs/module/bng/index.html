@@ -1,0 +1,1244 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Module bng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/" aria-current="page">
+                    
+                
+                  <strong class="govuk-service-navigation__active-fallback">Data model</strong>
+                
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/module">Module</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Biodiversity net gain</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">module: bng</span>
+    <h1 class="govuk-heading-xl">Biodiversity net gain</h1>
+    <p class="govuk-body-l">How any natural habitats on the development site will be improved by the proposed works.</p>
+    
+
+
+
+    
+      <h2 class="govuk-heading-l">Fields</h2>
+      
+<dl class="govuk-summary-list">
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        <div class="govuk-body govuk-!-font-weight-bold">Biodiversity gain exemption</div>
+        <div class="govuk-hint govuk-!-margin-bottom-0"><code>bng-exempt</code></div>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">Statement whether the biodiversity gain condition will apply if permission is granted. Householder applicants need to confirm the biodiversity gain condition does not apply.</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Required</dt>
+  <dd class="govuk-summary-list__value"><code>True</code></dd>
+</div>
+
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+</div>
+
+          
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Expected number</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+        </dl>
+
+        
+
+
+
+        
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        <div class="govuk-body govuk-!-font-weight-bold">Biodiversity gain condition applies</div>
+        <div class="govuk-hint govuk-!-margin-bottom-0"><code>bng-condition-applies</code></div>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">Does the applicant believe the Biodiversity Gain Condition applies to this application</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Required</dt>
+  <dd class="govuk-summary-list__value"><code>True</code></dd>
+</div>
+
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+</div>
+
+          
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Expected number</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+        </dl>
+
+        
+
+
+
+        
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        <div class="govuk-body govuk-!-font-weight-bold">Biodiversity gain condition exemption reason</div>
+        <div class="govuk-hint govuk-!-margin-bottom-0"><code>bng-condition-exemption-reasons</code></div>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">Reasons why BNG does not apply, referencing exemptions or transitional arrangements</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Required</dt>
+  <dd class="govuk-summary-list__value"><code>False</code></dd>
+</div>
+
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>object</code></dd>
+</div>
+
+          
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Expected number</dt>
+  <dd class="govuk-summary-list__value"><code>1 or more</code></dd>
+</div>
+
+        </dl>
+
+        
+
+
+
+        
+          
+
+<div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-bng-condition-exemption-reasons-3-0">
+  
+    
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="field-component-bng-condition-exemption-reasons-3-0-heading-1">
+          BNG exemption reason component
+        </span>
+      </h2>
+      
+    </div>
+    <div id="field-component-bng-condition-exemption-reasons-3-0-content-1" class="govuk-accordion__section-content">
+    
+      <dl class="govuk-summary-list">
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Exemption type</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>exemption-type</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">The type of biodiversity gain exemption from the bng-exemption-type enum</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>enum</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Allowed values</dt>
+        <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/bng-exemption-type">Bng exemption type codelist</a></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Reason</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>reason</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">The reason the exemption applies to this proposal</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>string</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+      </dl>
+    
+    </div>
+  </div>
+
+  
+</div>
+
+        
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        <div class="govuk-body govuk-!-font-weight-bold">Biodiversity net gain details</div>
+        <div class="govuk-hint govuk-!-margin-bottom-0"><code>bng-details</code></div>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">Comprehensive details about biodiversity net gain assessment including pre-development value, habitat loss information, and supporting documentation</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Required</dt>
+  <dd class="govuk-summary-list__value"><code>True</code></dd>
+</div>
+
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>object</code></dd>
+</div>
+
+          
+          
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Expected number</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+        </dl>
+
+        
+
+
+
+        
+          
+
+<div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-bng-details-4-0">
+  
+    
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="field-component-bng-details-4-0-heading-1">
+          Biodiversity net gain details component
+        </span>
+      </h2>
+      
+    </div>
+    <div id="field-component-bng-details-4-0-content-1" class="govuk-accordion__section-content">
+    
+      <dl class="govuk-summary-list">
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Pre development date</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>pre-development-date</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Date of pre-development biodiversity value calculation, must align with application or justified earlier date</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>datetime</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Pre development biodiversity value</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>pre-development-biodiversity-value</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Calculated biodiversity value in Habitat Biodiversity Units</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>decimal</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Earlier date reason</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>earlier-date-reason</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Reason for using a pre-development date that is earlier than the application submission</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>string</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Habitat loss after 2020</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>habitat-loss-after-2020</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Indicates whether there has been degradation of onsite habitat(s) after 30 Jan 2020</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Habitat loss details</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>habitat-loss-details</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Details of habitat loss or degradation events</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>object</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+                
+
+      <div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-habitat-loss-details-5-1">
+        
+          
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="field-component-habitat-loss-details-5-1-heading-1">
+                Habitat loss details component
+              </span>
+            </h2>
+            
+          </div>
+          <div id="field-component-habitat-loss-details-5-1-content-1" class="govuk-accordion__section-content">
+          
+            <dl class="govuk-summary-list">
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Loss date</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>loss-date</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Date the activity causing habitat loss or degradation occurred</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>True</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>datetime</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Pre loss biodiversity value</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>pre-loss-biodiversity-value</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Biodiversity value immediately before habitat loss or degradation occurred, measured in Habitat Biodiversity Units</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>True</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>decimal</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Supporting evidence</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>supporting-evidence</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Description or reference to supporting documents for habitat loss or degradation evidence</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>False</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+            </dl>
+          
+          </div>
+        </div>
+
+        
+      </div>
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Metric publication date</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>metric-publication-date</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Publication date of the biodiversity metric tool used for calculations</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>datetime</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Irreplaceable habitats</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>irreplaceable-habitats</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Indicates whether the site contains any irreplaceable habitats</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Irreplaceable habitats details</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>irreplaceable-habitats-details</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Description and references for any irreplaceable habitats identified on the site</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>False</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>string</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <div class="govuk-body govuk-!-font-weight-bold">Supporting documents</div>
+              <div class="govuk-hint govuk-!-margin-bottom-0"><code>supporting-documents</code></div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">References to supporting documents that have been uploaded with the application</p>
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Required</dt>
+        <dd class="govuk-summary-list__value"><code>True</code></dd>
+      </div>
+
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Datatype</dt>
+        <dd class="govuk-summary-list__value"><code>object</code></dd>
+      </div>
+
+                
+                
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number</dt>
+        <dd class="govuk-summary-list__value"><code>1 or more</code></dd>
+      </div>
+
+              </dl>
+
+              
+
+
+
+              
+                
+
+      <div class="govuk-accordion govuk-!-margin-top-2" data-module="govuk-accordion" id="field-component-supporting-documents-9-1">
+        
+          
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="field-component-supporting-documents-9-1-heading-1">
+                Supporting document component
+              </span>
+            </h2>
+            
+          </div>
+          <div id="field-component-supporting-documents-9-1-content-1" class="govuk-accordion__section-content">
+          
+            <dl class="govuk-summary-list">
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Reference</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>reference</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">A unique reference for the data item</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>True</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <div class="govuk-body govuk-!-font-weight-bold">Details</div>
+                    <div class="govuk-hint govuk-!-margin-bottom-0"><code>details</code></div>
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">Additional details or information about an item</p>
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Required</dt>
+              <dd class="govuk-summary-list__value"><code>False</code></dd>
+            </div>
+
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Datatype</dt>
+              <dd class="govuk-summary-list__value"><code>string</code></dd>
+            </div>
+
+                      
+                      
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Expected number</dt>
+              <dd class="govuk-summary-list__value"><code>1</code></dd>
+            </div>
+
+                    </dl>
+
+                    
+
+
+
+                    
+                  </dd>
+                </div>
+              
+            </dl>
+          
+          </div>
+        </div>
+
+        
+      </div>
+
+              
+            </dd>
+          </div>
+        
+      </dl>
+    
+    </div>
+  </div>
+
+  
+</div>
+
+        
+      </dd>
+    </div>
+  
+</dl>
+
+    
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+      <h2 class="govuk-heading-l">Rules</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        
+          <li>application-type == &#39;hh&#39; REQUIRES only bng-exempt field</li>
+        
+          <li>bng-condition-applies == false REQUIRES bng-condition-exemption-reasons.length &gt;= 1</li>
+        
+          <li>BNG details are required when their applies-if condition is satisfied and are forbidden otherwise</li>
+        
+          <li>application-type == &#39;hh&#39; RECOMMENDS bng-exempt == false</li>
+        
+          <li>bng-condition-exemption-reasons[].exemption-type must be from bng-exemption-type codelist</li>
+        
+          <li>bng-details.pre-development-date &lt; submission-details.submitted-at REQUIRES bng-details.earlier-date-reason</li>
+        
+          <li>bng-details.habitat-loss-after-2020 == true REQUIRES bng-details.habitat-loss-details</li>
+        
+          <li>bng-details.irreplaceable-habitats == true REQUIRES bng-details.irreplaceable-habitats-details</li>
+        
+      </ul>
+    
+
+    
+  
+  
+  
+  
+  
+  <h2 class="govuk-heading-l govuk-!-margin-top-9">Where this is used</h2>
+  
+  
+    <h3 class="govuk-heading-m">Application types</h3>
+    <p class="govuk-body">This module is used in 11 application types:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/advertising;full">Full planning permission and consent to display advertisements</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area">Planning permission for relevant demolition in a conservation area</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area;full">Full planning permission and demolition in a conservation area</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/demolition-con-area;hh">Householder planning permission and demolition in a conservation area</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/full">Full planning permission</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/full;lbc">Full planning permission and listed building consent</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/hh">Householder planning application</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/hh;lbc">Householder planning permission and listed building consent</a>
+          
+            <span class="govuk-hint govuk-!-display-inline govuk-!-margin-left-1">Combined application type</span>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/outline-all">Outline Planning Permission with All Matters Reserved</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/outline-some">Outline Planning Permission with Some Matters Reserved</a>
+          
+        </li>
+      
+        <li>
+          <a class="govuk-link" href="/planning-application-specification-viewer/application-type/technical-details-consent">Technical details consent</a>
+          
+        </li>
+      
+    </ul>
+  
+  
+  
+  
+  
+  
+
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>

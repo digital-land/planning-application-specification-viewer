@@ -1,0 +1,598 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Codelists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/">
+                    
+                Datasets
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/" aria-current="page">
+                    
+                
+                  <strong class="govuk-service-navigation__active-fallback">Data model</strong>
+                
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Codelist</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Codelists</h1>
+    <form hidden data-codelists-search class="govuk-!-margin-bottom-5" role="search">
+      <label class="govuk-label govuk-!-font-weight-bold" for="filter-codelists-list">Search codelists</label>
+      <div class="govuk-hint" id="filter-codelists-hint">Search by codelist name or description. Results update as you type.</div>
+      <input class="govuk-input" id="filter-codelists-list" name="list_filter" type="search" aria-describedby="filter-codelists-hint" aria-controls="codelists-list">
+    </form>
+    <p class="govuk-body" data-codelists-count role="status" aria-live="polite">Showing 53 codelists.</p>
+    
+      <ul class="govuk-list govuk-list--bullet" id="codelists-list">
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/advertisement-type">Advertisement type</a>
+            <div class="govuk-hint">A list of types of advertisements relevant to planning applications, used to classify and describe the nature of advertisements for regulatory and reporting purposes.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/affected-area-type">Affected area type</a>
+            <div class="govuk-hint">Specifies whether a biodiversity or geological feature is on the development site or on land directly next to it.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/applicant-interest-type">Applicant interest type</a>
+            <div class="govuk-hint">Applicant&#39;s relationship to the property or land in question.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/application-type">Application type</a>
+            <div class="govuk-hint">A canonical list of valid planning application types and subtypes
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/bng-exemption-type">BNG exemption type</a>
+            <div class="govuk-hint">Types of exemption from Biodiversity Net Gain (BNG) requirements.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/building-element-type">Building element type</a>
+            <div class="govuk-hint">A set of building elements that applicants are expected to provide material information for.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/contact-priority">Contact priority</a>
+            <div class="govuk-hint">Indicates the priority of a contact method, such as primary or secondary.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/day-type">Day type</a>
+            <div class="govuk-hint">Specifies the type of day, such as Monday to Friday, Saturday, Sunday, or Bank holiday, that is used to set operating hours
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/decision">Decision</a>
+            <div class="govuk-hint">Outcomes used for planning decisions and formal planning officer recommendations.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/decision-maker">Decision maker</a>
+            <div class="govuk-hint">The decision-maker for a planning application.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/designation">Designation</a>
+            <div class="govuk-hint">Designations
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/development-operation-type">Development operation type</a>
+            <div class="govuk-hint">Types of development that could be included in a proposal
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/development-phase">Development phase</a>
+            <div class="govuk-hint">The development phase codelist defines the various stages or phases that an extraction of oil and gas project may progress through, such as exploratory and production. This helps standardize the terminology used to describe the status of projects.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/development-scale">Development scale</a>
+            <div class="govuk-hint">Development scale classifications used for planning application reporting and process management.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/foul-sewage-disposal-type">Foul sewage disposal type</a>
+            <div class="govuk-hint">Foul sewage disposal type.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/grounds-ldc-post-apr-2024">Grounds LDC post April 2024</a>
+            <div class="govuk-hint">Grounds for lawful development certificate applications post April 2024.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/grounds-ldc-pre-apr-2024">Grounds LDC pre April 2024</a>
+            <div class="govuk-hint">Grounds for lawful development certificate applications pre April 2024.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/hazardous-sub-type">Hazardous substance type</a>
+            <div class="govuk-hint">Hazardous substance types for planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/hedgerow-interest-type">Hedgerow interest type</a>
+            <div class="govuk-hint">Declaration of applicant&#39;s interest in the land for hedgerow removal notice applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/housing-type">Housing type</a>
+            <div class="govuk-hint">Types of housing relevant to planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/illumination-method">Illumination method</a>
+            <div class="govuk-hint">The methods of illumination for an advert
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/illumination-type">Illumination type</a>
+            <div class="govuk-hint">The types of illumination for an advert
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/land-parcel-area">Land parcel size category</a>
+            <div class="govuk-hint">Size categories for the area of parcels of land
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/lawful-dev-cert-need">Lawful development certificate need</a>
+            <div class="govuk-hint">Types of lawful development certificate needs for planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/lb-alteration-type">Listed building alteration type</a>
+            <div class="govuk-hint">Types of listed building alterations for list building consent applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/listed-building-grade">Listed building grade</a>
+            <div class="govuk-hint">The grades assigned to listed buildings
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/non-residential-measurement-type">Non-residential measurement type</a>
+            <div class="govuk-hint">Types of non-residential measurement for planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/oilgas-permission-type">Oil and gas permission type</a>
+            <div class="govuk-hint">Types of permission for onshore oil nd gas extraction applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/operation-type">Operation type</a>
+            <div class="govuk-hint">Types of operation for planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/organisations">Organisation</a>
+            <div class="govuk-hint">Organisations relevant in planning
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/ownership-cert-type">Ownership certificate type</a>
+            <div class="govuk-hint">Types of ownership certificate for planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/parking-space-type">Parking space type</a>
+            <div class="govuk-hint">Types of parking spaces, including car, cycle, disability, and other categories.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/permission-process-event">Permission process event</a>
+            <div class="govuk-hint">Codes describing events in the processing of a planning application.</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/planning-authority">Planning authority</a>
+            <div class="govuk-hint">The authorities that can perform planning duties in England
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/planning-requirement">Planning requirement</a>
+            <div class="govuk-hint">A list of information requirements that may apply to a planning application. Each entry identifies information whose presence and adequacy can be checked, rather than a separate file that an applicant must supply. A document may address several requirements, and a requirement may be addressed by several documents. Whether a requirement applies depends on the application and relevant national and local requirements.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/provided-by">Provided by</a>
+            <div class="govuk-hint">Indicates whether information was provided by the applicant or calculated/determined by the system or an external service.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/public-register-status">Public register status</a>
+            <div class="govuk-hint">Statuses describing whether application material is suitable for public availability on a planning register.</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/reserved-matter-type">Reserved matter type</a>
+            <div class="govuk-hint">The types of reserved matters covered in an outline planning application.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/rights-of-way-answer">Rights of way answer</a>
+            <div class="govuk-hint">Indicates whether the statement about rights of way is true, false, or unknown.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/schedule-day">Schedule day</a>
+            <div class="govuk-hint">Days and special day categories used to describe when a schedule entry applies.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/site-constraint">Site constraint</a>
+            <div class="govuk-hint">Site constraints that may apply to a development site, such as conservation areas, national parks, or other protected areas.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/site-visit-contact-type">Site visit contact type</a>
+            <div class="govuk-hint">Specifies who should be contacted to arrange a site visit, such as the applicant or agent.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/specification-profile">Specification profile</a>
+            <div class="govuk-hint">Profiles used to define context-specific variations in how parts of the specification are applied.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/surface-water-disposal-type">Surface water disposal type</a>
+            <div class="govuk-hint">Types of systems or methods used to dispose of surface water from a development site, such as sustainable drainage, soakaway, or main sewer.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/tenure-type">Tenure type</a>
+            <div class="govuk-hint">Types of housing tenure, including market, social, affordable, and custom build options, as used in planning applications.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/use-class">Use class</a>
+            <div class="govuk-hint">Use classes from the Town and Country Planning (Use Classes) Order that categorise 
+the permitted use of land and buildings for planning permission purposes.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/use-class-accommodation">Use class for accommodation</a>
+            <div class="govuk-hint">Use classes from the Town and Country Planning (Use Classes) Order that are for accommodation uses.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/user-role-type">User role type</a>
+            <div class="govuk-hint">Types of user roles involved in a planning application, such as professional agents or proxies acting on behalf of the applicant.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/waste-capacity-unit">Waste capacity unit</a>
+            <div class="govuk-hint">Units for total capacity of waste management facilities (by volume or mass)</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/waste-management-type">Waste management type</a>
+            <div class="govuk-hint">Types of waste management facilities and processes, including landfill, incineration, recycling, composting, and other related developments.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/waste-throughput-unit">Waste throughput unit</a>
+            <div class="govuk-hint">Units for annual throughput of waste (by mass or volume)</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/yes-no-not-applicable">Yes, no, na</a>
+            <div class="govuk-hint">Standard responses for yes, no, or not applicable, used for questions where these are the only valid answers.
+</div>
+          </li>
+        
+          <li data-codelist-item>
+            <a class="govuk-link" href="/planning-application-specification-viewer/codelist/yes-no-unknown">Yes, no, unknown</a>
+            <div class="govuk-hint">Indicates whether the answer is yes, no, or unknown.
+</div>
+          </li>
+        
+      </ul>
+      <p hidden class="govuk-body" data-no-codelists>No codelists match your search. Try a different name or description.</p>
+    
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+
+
+<script type="module">
+  import initIndexSearch from "/planning-application-specification-viewer/static/javascripts/index-search.js";
+  initIndexSearch({
+    form: document.querySelector('[data-codelists-search]'),
+    count: document.querySelector('[data-codelists-count]'),
+    noResults: document.querySelector('[data-no-codelists]'),
+    elements: document.querySelectorAll('[data-codelist-item]'),
+    label: 'codelists'
+  });
+</script>
+
+
+  
+
+  
+
+  </body>
+</html>

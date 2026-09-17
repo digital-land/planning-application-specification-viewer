@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Dataset planning-application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+	<meta name="digital-land:template" content="digital-land-frontend/base.jinja">
+    
+    
+  <!-- GOV.UK Frontend is vendored with the static renderer so its version is reproducible. -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/accessible-autocomplete.css">
+  <link rel="stylesheet" href="https://design.planning.data.gov.uk/static/stylesheets/vendor/moj-frontend.min.css">
+  <!-- Local styles for this viewer -->
+  <link rel="stylesheet" href="/planning-application-specification-viewer/static/stylesheets/application.css">
+
+
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+
+    
+        
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+
+    
+    
+
+    
+
+  
+
+
+
+
+  <section aria-label="Service information" class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+
+    <div class="govuk-service-navigation__container">
+      
+      
+        <span class="govuk-service-navigation__service-name">
+          
+            <a href="/planning-application-specification-viewer/" class="govuk-service-navigation__link">
+              Planning application data standard
+            </a>
+          
+        </span>
+      
+
+      
+      
+      
+      
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          
+
+          <ul class="govuk-service-navigation__list" id="navigation" >
+
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/application-type/">
+                    
+                Application types
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/dataset/" aria-current="page">
+                    
+                
+                  <strong class="govuk-service-navigation__active-fallback">Datasets</strong>
+                
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/data-model/">
+                    
+                Data model
+                  </a>
+                
+              </li>
+            
+              
+
+              
+              <li class="govuk-service-navigation__item">
+                
+                  <a class="govuk-service-navigation__link" href="/planning-application-specification-viewer/view/">
+                    
+                Views
+                  </a>
+                
+              </li>
+            
+
+            </ul>
+        </nav>
+      
+    </div>
+
+    </div>
+  </section>
+
+
+
+
+
+    
+      <div class="govuk-width-container">
+        
+  
+    
+
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      POC
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a proof of concept viewer for the planning permission specifications - your
+        <a
+          class="govuk-link"
+          href="https://github.com/digital-land/planning-application-data-specification/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >feedback</a>
+        will help us to improve it.
+    </span>
+  </p>
+</div>
+
+  
+  
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/">Home</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/planning-application-specification-viewer/dataset">Dataset</a>
+    </li>
+  
+
+  
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">planning application</li>
+  
+
+  </ol>
+</nav>
+
+
+        
+        <main class="govuk-main-wrapper" id="main-content">
+          
+<div class='govuk-grid-row'>
+  <div class='govuk-grid-column-full'>
+    <span class="govuk-caption-xl">Dataset</span>
+    <h1 class="govuk-heading-xl">planning application</h1>
+  </div>
+</div>
+  
+<div class='govuk-grid-row'>
+  <div class='govuk-grid-column-full'>
+    <p class="govuk-body-l">Records of applications submitted to planning authorities</p>
+    
+
+
+
+  
+    <h2 class="govuk-heading-l">Fields</h2>
+    <dl class="govuk-summary-list govuk-!-margin-top-3">
+      
+        <div class="govuk-summary-list__row" id="reference">
+          <dt class="govuk-summary-list__key">Reference</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The <a class="govuk-link" href="#reference">reference</a> for the planning application</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>reference</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>received-date</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-017">dd-need-017</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>linked-applications</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-001">dd-need-001</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="name">
+          <dt class="govuk-summary-list__key">Name</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">A plain-language label for the planning application so it can be identified without relying on its reference</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>name</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>SHOULD</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <p class="app-secondary-text">No needs satisfied by this field.</p>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="description">
+          <dt class="govuk-summary-list__key">Description</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The description of the proposed development</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>description</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-028">dd-need-028</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="application-types">
+          <dt class="govuk-summary-list__key">Application types</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">One or more codelist values describing the application type</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>application-types</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>n</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>enum</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Allowed values</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/application-type">Application type codelist</a></dd>
+</div>
+
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-025">need-ps-025</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-026">need-ps-026</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>), field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-020">need-ps-020</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>), field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-021">need-ps-021</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-006">need-ps-006</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-007">need-ps-007</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-008">need-ps-008</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-010">need-ps-010</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-005">need-ps-005</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-005">need-ps-005</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-011">need-ps-011</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>), field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-019">need-ps-019</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-001">need-ps-001</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>), field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-023">need-ps-023</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-012">need-ps-012</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-013">need-ps-013</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-014">need-ps-014</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-015">need-ps-015</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-016">need-ps-016</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>development-scale</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-017">need-ps-017</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>), field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-024">need-ps-024</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="site">
+          <dt class="govuk-summary-list__key">Site</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The <a class="govuk-link" href="#reference">reference</a> for the related site</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>site</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Related dataset</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/dataset/site">Site dataset</a></dd>
+</div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>geometry</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/site">site</a>) and field <code class='app-code'>address-text</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/site">site</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-051">dd-need-051</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="received-date">
+          <dt class="govuk-summary-list__key">Received date</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The date the planning authority received the application</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>received-date</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>datetime</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use this field to record the date the planning authority first received the application.</p>
+<p class="govuk-body">Do not replace it with the date the application was later validated or registered.</p>
+<p class="govuk-body">This date marks the start of the authority's end-to-end handling time.</p>
+<p class="govuk-body">Keep the original received date and record validation separately in the planning permission timeline using the defined events:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">valid-from</code>: the date from which the authority treated the application as valid</li>
+<li><code class="app-code">invalid-from</code>: the date from which the authority treated the application as invalid</li>
+<li><code class="app-code">validation-completed</code>: the date the authority completed its validation check</li>
+</ul>
+<p class="govuk-body">These dates may differ. Keeping them separate makes it possible to distinguish time spent reaching validation from time spent determining the application.</p>
+<p class="govuk-body">For example:</p>
+<p class="govuk-body"><code class="app-code">json
+{
+  "received-date": "2026-08-03"
+}</code></p>
+  </div>
+</details>
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>) and field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-066">dd-need-066</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>reference</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-017">dd-need-017</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="planning-authority">
+          <dt class="govuk-summary-list__key">Planning authority</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">Identifier of the planning authority that received this planning application</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>planning-authority</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>enum</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Allowed values</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/planning-authority">Planning authority codelist</a></dd>
+</div>
+
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use the identifier for the planning authority that received the application.</p>
+<p class="govuk-body">Find the authority in the <a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/blob/main/data/codelist/planning-authority.csv"><code class="app-code">planning-authority</code> codelist</a> and use its reference, rather than its name or a locally created code.</p>
+<p class="govuk-body">For example, use <code class="app-code">local-authority:LDS</code> for Leeds City Council.</p>
+  </div>
+</details>
+
+
+            
+            <p class="app-secondary-text">No needs satisfied by this field.</p>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="officer-name">
+          <dt class="govuk-summary-list__key">Case officer</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">Name of the planning officer responsible for handling the application</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>officer-name</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>Not specified</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field helps satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-115">dd-need-115</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="development-scale">
+          <dt class="govuk-summary-list__key">Development scale</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The local planning authority's classification of a full or outline planning application by development scale</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>development-scale</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>enum</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Allowed values</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/development-scale">Development scale codelist</a></dd>
+</div>
+
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>SHOULD</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use this field to record whether the authority classified a full or outline planning application as major or minor.</p>
+<p class="govuk-body">This classification supports the consistent production of relevant parts of PS1 and PS2 returns. It records the authority's classification and is not calculated automatically from the details of the proposed development.</p>
+<p class="govuk-body">Use it only for:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li><code class="app-code">full</code></li>
+<li><code class="app-code">outline-all</code></li>
+<li><code class="app-code">outline-some</code></li>
+</ul>
+<p class="govuk-body">Omit the field for application types where the major or minor classification does not apply. Where it does apply, use a value from the <a class="govuk-link" href="https://github.com/digital-land/planning-application-data-specification/blob/main/data/codelist/development-scale.csv"><code class="app-code">development-scale</code> codelist</a>.</p>
+  </div>
+</details>
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-025">need-ps-025</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-026">need-ps-026</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-006">need-ps-006</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-007">need-ps-007</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-008">need-ps-008</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-010">need-ps-010</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-005">need-ps-005</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-012">need-ps-012</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-013">need-ps-013</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-014">need-ps-014</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-015">need-ps-015</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-016">need-ps-016</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>application-types</code>, field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-017">need-ps-017</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="planning-performance-agreement">
+          <dt class="govuk-summary-list__key">Planning performance agreement</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">Whether the application was subject to a Planning Performance Agreement</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>planning-performance-agreement</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use this field only to record whether the particular planning application is subject to a planning performance agreement.</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>Use <code class="app-code">true</code> when a planning performance agreement applies.</li>
+<li>Use <code class="app-code">false</code> when it is known that no planning performance agreement applies.</li>
+<li>Omit the field when this information has not been recorded or is not known.</li>
+</ul>
+<p class="govuk-body">Do not use this field to describe the agreement, its terms or its milestones.</p>
+  </div>
+</details>
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-025">need-ps-025</a>.</li>
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-026">need-ps-026</a>.</li>
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>), field <code class='app-code'>permission-process-event</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>) and field <code class='app-code'>event-date</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-permission-timeline">planning-permission-timeline</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/need-ps-027">need-ps-027</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="withdrawn-date">
+          <dt class="govuk-summary-list__key">Withdrawn date</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The date the planning application was withdrawn</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>withdrawn-date</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>datetime</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>SHOULD</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field satisfies need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-075">dd-need-075</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="linked-applications">
+          <dt class="govuk-summary-list__key">Linked applications</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">References to earlier applications this application directly links to</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>linked-applications</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>n</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Related dataset</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/dataset/planning-application">Planning application dataset</a></dd>
+</div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-bottom-2 app-guidance-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">Guidance</span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
+<p class="govuk-body">Use this field to reference earlier applications that have a direct procedural relationship with the current application.</p>
+<p class="govuk-body">For example, link:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>a reserved matters application to its outline application</li>
+<li>a technical details consent application to its permission in principle application</li>
+<li>a non-material amendment to the permission being amended</li>
+<li>an application to discharge conditions to the permission containing those conditions</li>
+</ul>
+<p class="govuk-body">Do not include every application for the same site, nearby applications or applications that are related only because they have the same applicant. Wider planning history can be found through the linked site records.</p>
+  </div>
+</details>
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>reference</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-001">dd-need-001</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="document-url">
+          <dt class="govuk-summary-list__key">Document URL</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">A URL to the completed application form</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>document-url</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>url</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>SHOULD</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-032">dd-need-032</a>.</li>
+                  
+                    <li>One of these fields or field <code class='app-code'>documentation-url</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-032">dd-need-032</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="documentation-url">
+          <dt class="govuk-summary-list__key">Documentation URL</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">The URL where supporting documents for the application can be accessed</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>documentation-url</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>url</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MUST</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <details class="govuk-details govuk-!-margin-top-2">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Needs this field satisfies</span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Fields should only be added if they satisfy a user need. This field helps satisfy the following needs.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  
+                    <li>This field and field <code class='app-code'>planning-application</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) and field <code class='app-code'>decision</code> (dataset <a class="govuk-link" href="/planning-application-specification-viewer/dataset/decision-notice">decision-notice</a>) satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-032">dd-need-032</a>.</li>
+                  
+                    <li>One of these fields or field <code class='app-code'>document-url</code> satisfy need <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-032">dd-need-032</a>.</li>
+                  
+                </ul>
+              </div>
+            </details>
+            
+          </dd>
+        </div>
+      
+        <div class="govuk-summary-list__row" id="notes">
+          <dt class="govuk-summary-list__key">Notes</dt>
+          <dd class="govuk-summary-list__value">
+            <div class="app-field-details__attrs">
+              
+                <p class="govuk-body">Optional notes that provide additional context about the planning application</p>
+              
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Reference</dt>
+  <dd class="govuk-summary-list__value"><code>notes</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Cardinality</dt>
+  <dd class="govuk-summary-list__value"><code>1</code></dd>
+</div>
+
+                
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Datatype</dt>
+  <dd class="govuk-summary-list__value"><code>string</code></dd>
+</div>
+
+                
+                
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Requirement level</dt>
+                  <dd class="govuk-summary-list__value"><code>MAY</code></dd>
+                </div>
+              </dl>
+
+            </div>
+            
+
+
+            
+            <p class="app-secondary-text">No needs satisfied by this field.</p>
+            
+          </dd>
+        </div>
+      
+    </dl>
+  
+
+    <h2 class="govuk-heading-l" id="examples">Examples</h2>
+<p class="govuk-body">These examples show how to record information about a planning application.</p>
+<div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds"><h3 class="govuk-heading-m" id="basic-planning-application">Basic planning application</h3>
+<p class="govuk-body">This example shows the core information recorded for a full planning application. The application, its site and its planning authority each use their own reference.</p>
+</div></div><div class="govuk-tabs govuk-!-margin-bottom-6" data-module="govuk-tabs">
+<h3 class="govuk-tabs__title">Example formats</h3>
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+<a class="govuk-tabs__tab" href="#basic-planning-application-table">Table</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#basic-planning-application-json">JSON</a>
+</li>
+</ul>
+<div class="govuk-tabs__panel" id="basic-planning-application-table">
+<h4 class="govuk-heading-s">Table</h4>
+<div class="app-example-table">
+<table class="govuk-table">
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="col">Field</th>
+<th class="govuk-table__header" scope="col">Value</th>
+</tr>
+</thead>
+<tbody class="govuk-table__body">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reference</code></th>
+<td class="govuk-table__cell">2026/0123/FUL</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>name</code></th>
+<td class="govuk-table__cell">Former Crown Works redevelopment</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>description</code></th>
+<td class="govuk-table__cell">Demolition of the existing workshops and construction of 24 homes with associated access and landscaping.</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>application-types</code></th>
+<td class="govuk-table__cell">["full"]</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>site</code></th>
+<td class="govuk-table__cell">site-2026-0123</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>received-date</code></th>
+<td class="govuk-table__cell">2026-02-16</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>planning-authority</code></th>
+<td class="govuk-table__cell">local-authority:CMD</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>development-scale</code></th>
+<td class="govuk-table__cell">major</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>planning-performance-agreement</code></th>
+<td class="govuk-table__cell">false</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>document-url</code></th>
+<td class="govuk-table__cell">https://example.org/planning-applications/2026-0123-ful/application-form.pdf</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>documentation-url</code></th>
+<td class="govuk-table__cell">https://example.org/planning-applications/2026-0123-ful</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="basic-planning-application-json">
+<h4 class="govuk-heading-s">JSON</h4>
+<pre class="app-example-json"><code>{
+  "reference": "2026/0123/FUL",
+  "name": "Former Crown Works redevelopment",
+  "description": "Demolition of the existing workshops and construction of 24 homes with associated access and landscaping.",
+  "application-types": [
+    "full"
+  ],
+  "site": "site-2026-0123",
+  "received-date": "2026-02-16",
+  "planning-authority": "local-authority:CMD",
+  "development-scale": "major",
+  "planning-performance-agreement": false,
+  "document-url": "https://example.org/planning-applications/2026-0123-ful/application-form.pdf",
+  "documentation-url": "https://example.org/planning-applications/2026-0123-ful"
+}</code></pre>
+</div>
+</div>
+<div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds"><h3 class="govuk-heading-m" id="combined-planning-application">Combined planning application</h3>
+<p class="govuk-body">This example shows one application seeking both full planning permission and listed building consent. Include both values in <code class="app-code">application-types</code>; do not create a second planning application record solely because more than one consent is sought.</p>
+</div></div><div class="govuk-tabs govuk-!-margin-bottom-6" data-module="govuk-tabs">
+<h3 class="govuk-tabs__title">Example formats</h3>
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+<a class="govuk-tabs__tab" href="#combined-full-and-listed-building-consent-table">Table</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#combined-full-and-listed-building-consent-json">JSON</a>
+</li>
+</ul>
+<div class="govuk-tabs__panel" id="combined-full-and-listed-building-consent-table">
+<h4 class="govuk-heading-s">Table</h4>
+<div class="app-example-table">
+<table class="govuk-table">
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="col">Field</th>
+<th class="govuk-table__header" scope="col">Value</th>
+</tr>
+</thead>
+<tbody class="govuk-table__body">
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>reference</code></th>
+<td class="govuk-table__cell">2026/0204/FUL</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>name</code></th>
+<td class="govuk-table__cell">Town Hall restoration and extension</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>description</code></th>
+<td class="govuk-table__cell">Restoration and extension of the Grade II listed town hall to provide offices and community space.</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>application-types</code></th>
+<td class="govuk-table__cell">["full", "lbc"]</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>site</code></th>
+<td class="govuk-table__cell">site-2026-0204</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>received-date</code></th>
+<td class="govuk-table__cell">2026-03-09</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>planning-authority</code></th>
+<td class="govuk-table__cell">local-authority:CMD</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>development-scale</code></th>
+<td class="govuk-table__cell">minor</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>planning-performance-agreement</code></th>
+<td class="govuk-table__cell">false</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>document-url</code></th>
+<td class="govuk-table__cell">https://example.org/planning-applications/2026-0204-ful/application-form.pdf</td>
+</tr>
+<tr class="govuk-table__row">
+<th class="govuk-table__header" scope="row"><code>documentation-url</code></th>
+<td class="govuk-table__cell">https://example.org/planning-applications/2026-0204-ful</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="combined-full-and-listed-building-consent-json">
+<h4 class="govuk-heading-s">JSON</h4>
+<pre class="app-example-json"><code>{
+  "reference": "2026/0204/FUL",
+  "name": "Town Hall restoration and extension",
+  "description": "Restoration and extension of the Grade II listed town hall to provide offices and community space.",
+  "application-types": [
+    "full",
+    "lbc"
+  ],
+  "site": "site-2026-0204",
+  "received-date": "2026-03-09",
+  "planning-authority": "local-authority:CMD",
+  "development-scale": "minor",
+  "planning-performance-agreement": false,
+  "document-url": "https://example.org/planning-applications/2026-0204-ful/application-form.pdf",
+  "documentation-url": "https://example.org/planning-applications/2026-0204-ful"
+}</code></pre>
+</div>
+</div>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l app-strong-section-break">
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">Needs satisfied by this dataset</h2>
+    <p class="govuk-body">Datasets should only be included in the specification if they satisfy user needs.</p>
+    
+      <p class="govuk-hint">No recorded links yet.</p>
+    
+  </div>
+</div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+	
+  <footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification/issues/new">Feedback</a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://github.com/digital-land/planning-application-data-specification">Source code</a>
+          </li>
+        </ul>
+        <div class="govuk-footer__meta-custom">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>,
+          except where otherwise stated.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+  
+
+  
+    
+
+    
+    
+    
+    
+<script type="module">
+  import { initAll } from "/planning-application-specification-viewer/static/vendor/govuk/govuk-frontend-6.4.0.min.js";
+  initAll();
+</script>
+
+
+    
+<script src="https://design.planning.data.gov.uk/static/javascripts/digital-land-frontend.js"></script>
+<script>
+  window.DLFrontend.initAll();
+</script>
+
+
+    
+  
+
+  
+
+  </body>
+</html>
