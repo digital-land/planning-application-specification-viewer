@@ -8,29 +8,6 @@ def combined_applications(specification):
     return list(specification.combined_applications())
 
 
-def authored_fields(specification, ref, visited=None):
-    """Retain the original field order and inheritance labels for display.
-
-    ApplicationDef currently resolves inherited modules, but not inherited
-    application-level fields or their provenance. Use package-loaded metadata.
-    """
-    visited = set() if visited is None else visited
-    if ref in visited:
-        return []
-    visited.add(ref)
-    record = specification.tables["application"][ref]
-    parents = record.get("extends") or []
-    parents = [parents] if isinstance(parents, str) else parents
-    fields = {}
-    for parent in parents:
-        if parent in specification.tables["application"]:
-            for entry, origin in authored_fields(specification, parent, visited):
-                fields[entry["field"]] = (entry, origin or parent)
-    for entry in record.get("fields", []) or []:
-        fields[entry["field"]] = (entry, None)
-    return list(fields.values())
-
-
 def field_display(specification, entry, origin=None):
     ref = entry["field"]
     field = specification.fields.get(ref)
@@ -73,7 +50,7 @@ def application_detail(specification, application, url_for):
         "extends": {"ref": record["extends"], "href": url_for(f"/application-type/{record['extends']}")} if parents else None,
         "synonyms": application.synonyms, "notes": application.notes,
         "entry_date": application.entry_date, "legislation": application.legislation,
-        "fields": combined_fields(application) if application.is_combined else [field_display(specification, entry, origin) for entry, origin in authored_fields(specification, application.ref)],
+        "fields": combined_fields(application) if application.is_combined else [field_display(specification, item.definition, item.inherited_from) for item in application.resolved_fields],
         "modules": [{**linked_record(module, "module", url_for), "description": module.description or "",
                      "inherited_from": ", ".join(parents) if parents and module.ref not in own_modules else None} for module in modules],
         "links": {"back": url_for("/application-type")},
