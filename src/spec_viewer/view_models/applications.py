@@ -1,20 +1,11 @@
 """Application page contexts using package definitions and authored display metadata."""
-import csv
-from planning_application_specification.applications import get_active_combined_application_refs
 from planning_application_specification.models import ComponentUsage, FieldUsage
 from spec_viewer.view_models.containers import linked_record
 
 
 def combined_applications(specification):
-    # The package owns approval/resolution. The CSV preserves the original index
-    # ordering and its exclusion of ended entries, neither exposed by that query.
-    active = get_active_combined_application_refs(specification.tables)
-    path = specification.source_path / "specification/combined-application-types.csv"
-    if not path.exists():
-        return []
-    with path.open(newline="", encoding="utf-8") as stream:
-        return [specification.application(row["application-types"]) for row in csv.DictReader(stream)
-                if row["application-types"] in active and not (row.get("end-date") or "").strip()]
+    """Use package-owned ordering, resolution and current-status rules."""
+    return list(specification.combined_applications())
 
 
 def authored_fields(specification, ref, visited=None):
