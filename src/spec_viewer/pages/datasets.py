@@ -25,15 +25,16 @@ def render_datasets(data, environment, output_dir):
         fields = []
         for entry in dataset.get("fields", []):
             field_ref = entry["field"]
-            base = specification.fields.get(field_ref)
+            resolved = specification.resolve_field(field_ref, dataset=ref)
+            base = resolved.base
             target = entry.get("dataset")
             fields.append({
-                "ref": field_ref, "name": entry.get("name") or (base.name if base else field_ref),
-                "description": render_govuk_markdown(entry.get("description") or (base.description if base else ""), capitalise=True),
-                "cardinality": entry.get("cardinality") or (base.cardinality if base else "1"),
-                "datatype": entry.get("datatype") or (base.datatype if base else "string"),
+                "ref": field_ref, "name": entry.get("name") or resolved.name,
+                "description": render_govuk_markdown(entry.get("description") or resolved.description, capitalise=True),
+                "cardinality": entry.get("cardinality") or resolved.cardinality,
+                "datatype": entry.get("datatype") or resolved.datatype,
                 "codelist": entry.get("codelist") or (base.codelist if base else None),
-                "requirement_level": entry.get("requirement-level"),
+                "requirement_level": entry.get("requirement-level", resolved.requirement_level),
                 "target_dataset": target, "target_dataset_href": url_for(f"/dataset/{target}") if target else "",
                 "guidance": guidance_html(specification.guidance(dataset=ref, field=field_ref)),
                 "satisfactions": satisfaction_messages_for_field(all_justifications, ref, field_ref, url_for),

@@ -13,7 +13,8 @@ def render_views(specification, environment, output_dir):
     if public_view is None:
         return 0
     url_for = environment.globals["url_for"]
-    datasets = build_national_public_view_datasets(public_view, specification.tables["dataset"], specification.fields, url_for)
+    view = specification.view("national-public")
+    datasets = build_national_public_view_datasets(view, url_for)
     write_page(environment, output_dir, "view", "view_index.html", {
         "page_title": "Views", "views": [{"name": public_view.get("name", "National public view"),
             "description": "The data that planning authorities must publish as open data.", "href": url_for("/view/national-public/")}],

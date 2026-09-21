@@ -99,7 +99,7 @@ usages = spec.field_usages("description")
 guidance = spec.guidance(dataset="decision-notice", field="planning-officer-recommendation")
 ```
 
-Specification rules should live in the package. Some compatibility adapters still interpret package-loaded metadata for application field inheritance, profile/view overrides and need relationships. Combined-application ordering also reads source CSV metadata. These preserve the original output while package improvements are considered.
+Specification rules should live in the package. Application field inheritance and current combined-application ordering now come from package queries. Dataset pages use `resolve_field(..., dataset=...)`, and national public view pages use `spec.view(...)` for selection, resolved fields, requirements and record filters. Compatibility adapters still apply planning-application profile overrides and interpret need relationships; codelist references are read from the resolved usage and base definition. These preserve the original output while package improvements are considered.
 
 Project documents are a separate concern: the viewer reads design-decision Markdown directly without exposing it through the specification API. Example explanations live in `content/`; their canonical JSON remains in the source repository. Coverage reporting reads the source volume CSV and uses package application references. No viewer code imports the original repository's `bin` modules or modifies Python's search path.
 

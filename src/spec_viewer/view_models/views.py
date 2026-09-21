@@ -1,88 +1,42 @@
-"""Public view presentation from package-loaded specification metadata."""
-from types import SimpleNamespace
-from typing import Any, Dict, List
+"""Presentation of package-resolved public view definitions."""
 
 
-def build_field_display(entry, fields):
-    ref = entry["field"]
-    base = fields.get(ref)
-    def effective(key, default):
-        return entry.get(key) or getattr(base, key, default)
-    return SimpleNamespace(ref=ref, name=effective("name", ref), description=effective("description", ""),
-                           datatype=effective("datatype", "string"), cardinality=effective("cardinality", "1"),
-                           codelist=effective("codelist", None), requirement_level=entry.get("requirement-level"))
+def field_codelist(field):
+    source = getattr(field, "dataset_field", field)
+    return source.usage.overrides.get("codelist") or source.base.codelist
 
 
-def national_public_view_field_applicability(
-    dataset: Dict[str, Any], field_ref: str
-) -> str:
-    """Return the one explicit public-view field applicability note, if present."""
-    for field in dataset.get("fields", []):
-        if field.get("field") != field_ref:
-            continue
-        application_types = (
-            field.get("applies-if", {}).get("application-types", {}).get("in", [])
-        )
-        if set(application_types) == {"full", "outline-all", "outline-some"}:
-            return "Only for full and outline planning applications."
+def applicability_note(field):
+    condition = field.dataset_field.applies_if or {}
+    application_types = condition.get("application-types", {}).get("in", []) if isinstance(condition, dict) else []
+    if set(application_types) == {"full", "outline-all", "outline-some"}:
+        return "Only for full and outline planning applications."
     return ""
 
-def build_national_public_view_datasets(
-    public_view: Dict[str, Any],
-    dataset_index: Dict[str, Dict[str, Any]],
-    field_index: Dict[str, Any],
-    url_for,
-) -> List[Dict[str, Any]]:
-    datasets: List[Dict[str, Any]] = []
 
-    for view_dataset in public_view.get("datasets", []):
-        dataset_ref = view_dataset["dataset"]
-        dataset = dataset_index.get(dataset_ref, {})
+def build_national_public_view_datasets(view, url_for):
+    datasets = []
+    for dataset in view.datasets():
         fields = []
-        for field in view_dataset.get("fields", []):
-            field_view = build_field_display(field, field_index)
-            target_dataset = field.get("dataset")
-            fields.append(
-                {
-                    "ref": field_view.ref,
-                    "name": field_view.name,
-                    "description": field_view.description,
-                    "datatype": field_view.datatype,
-                    "cardinality": field_view.cardinality,
-                    "requirement_level": field_view.requirement_level,
-                    "field_href": url_for(f"/field/{field_view.ref}"),
-                    "target_dataset": target_dataset,
-                    "target_dataset_href": (
-                        url_for(f"/dataset/{target_dataset}")
-                        if target_dataset
-                        else ""
-                    ),
-                    "codelist": field_view.codelist,
-                    "codelist_href": (
-                        url_for(f"/codelist/{field_view.codelist}")
-                        if field_view.codelist
-                        else ""
-                    ),
-                    "applicability": national_public_view_field_applicability(
-                        dataset, field_view.ref
-                    ),
-                }
-            )
-
-        record_inclusion = view_dataset.get("record-inclusion")
-        datasets.append(
-            {
-                "ref": dataset_ref,
-                "name": view_dataset.get("name") or dataset.get("name") or dataset_ref,
-                "description": dataset.get("description", ""),
-                "href": url_for(f"/view/national-public/#{dataset_ref}"),
-                "fields": fields,
-                "record_inclusion": record_inclusion,
-                "publishing_rule": (
-                    record_inclusion.get("description")
-                    if record_inclusion
-                    else "Publish all records."
-                ),
-            }
-        )
+        for field in view.resolve_container_items(dataset=dataset.ref):
+            target = field.usage.overrides.get("dataset", field.dataset_field.usage.overrides.get("dataset"))
+            codelist = field_codelist(field)
+            fields.append({
+                "ref": field.ref, "name": field.name, "description": field.description,
+                "datatype": field.datatype, "cardinality": field.cardinality,
+                "requirement_level": field.requirement_level,
+                "field_href": url_for(f"/field/{field.ref}"),
+                "target_dataset": target,
+                "target_dataset_href": url_for(f"/dataset/{target}") if target else "",
+                "codelist": codelist,
+                "codelist_href": url_for(f"/codelist/{codelist}") if codelist else "",
+                "applicability": applicability_note(field),
+            })
+        rule = dataset.record_inclusion
+        datasets.append({
+            "ref": dataset.ref, "name": dataset.name, "description": dataset.description,
+            "href": url_for(f"/view/national-public/#{dataset.ref}"),
+            "fields": fields, "record_inclusion": rule,
+            "publishing_rule": rule.get("description") if rule else "Publish all records.",
+        })
     return datasets
