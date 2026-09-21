@@ -16,7 +16,7 @@ def container_fields(specification, kind, ref, guidance_container=None):
             "ref": item.ref, "name": item.name, "description": item.description,
             "datatype": item.datatype, "required": item.required,
             "cardinality": item.cardinality,
-            "codelist": item.usage.overrides.get("codelist") or item.base.codelist,
+            "codelist": item.codelist,
             "component_ref": component,
             "component_name": (definition.name or definition.ref) if definition else None,
             "children": container_fields(specification, "component", component, guidance_container) if component else [],

@@ -1,11 +1,6 @@
 """Presentation of package-resolved public view definitions."""
 
 
-def field_codelist(field):
-    source = getattr(field, "dataset_field", field)
-    return source.usage.overrides.get("codelist") or source.base.codelist
-
-
 def applicability_note(field):
     condition = field.dataset_field.applies_if or {}
     application_types = condition.get("application-types", {}).get("in", []) if isinstance(condition, dict) else []
@@ -20,7 +15,7 @@ def build_national_public_view_datasets(view, url_for):
         fields = []
         for field in view.resolve_container_items(dataset=dataset.ref):
             target = field.usage.overrides.get("dataset", field.dataset_field.usage.overrides.get("dataset"))
-            codelist = field_codelist(field)
+            codelist = field.codelist
             fields.append({
                 "ref": field.ref, "name": field.name, "description": field.description,
                 "datatype": field.datatype, "cardinality": field.cardinality,

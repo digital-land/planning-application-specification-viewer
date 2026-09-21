@@ -26,14 +26,13 @@ def render_datasets(data, environment, output_dir):
         for entry in dataset.get("fields", []):
             field_ref = entry["field"]
             resolved = specification.resolve_field(field_ref, dataset=ref)
-            base = resolved.base
             target = entry.get("dataset")
             fields.append({
                 "ref": field_ref, "name": entry.get("name") or resolved.name,
                 "description": render_govuk_markdown(entry.get("description") or resolved.description, capitalise=True),
                 "cardinality": entry.get("cardinality") or resolved.cardinality,
                 "datatype": entry.get("datatype") or resolved.datatype,
-                "codelist": entry.get("codelist") or (base.codelist if base else None),
+                "codelist": entry.get("codelist") or resolved.codelist,
                 "requirement_level": entry.get("requirement-level", resolved.requirement_level),
                 "target_dataset": target, "target_dataset_href": url_for(f"/dataset/{target}") if target else "",
                 "guidance": guidance_html(specification.guidance(dataset=ref, field=field_ref)),
