@@ -14,7 +14,7 @@ def build_national_public_view_datasets(view, url_for):
     for dataset in view.datasets():
         fields = []
         for field in view.resolve_container_items(dataset=dataset.ref):
-            target = field.usage.overrides.get("dataset", field.dataset_field.usage.overrides.get("dataset"))
+            target = field.target_dataset
             codelist = field.codelist
             fields.append({
                 "ref": field.ref, "name": field.name, "description": field.description,

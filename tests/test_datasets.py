@@ -6,11 +6,11 @@ from spec_viewer.rendering import create_environment
 
 
 @pytest.mark.parametrize("base_url", ["", "/viewer"])
-def test_dataset_profile_overrides_guidance_and_needs(tmp_path, base_url):
+def test_specification_overrides_guidance_and_needs(tmp_path, base_url):
     source = tmp_path / "source"
     files = {
         "field/reference.md": "field: reference\nname: Reference\ndescription: Base description",
-        "dataset/record.schema.md": "dataset: record\nname: Record\nfields:\n  - field: reference",
+        "dataset/record.schema.md": "dataset: record\nname: Record\nfields:\n  - field: reference\n    dataset: related",
         "planning-application-data.schema.md": "specification: planning-application-data\ndatasets:\n  - dataset: record\n    name: Profile record\n    fields:\n      - field: reference\n        description: profile description\n        requirement-level: MUST\n        dataset: related",
         "guidance/dataset/record/field/reference.md": "dataset: record\nfield: reference",
     }

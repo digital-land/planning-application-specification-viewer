@@ -11,29 +11,31 @@ from spec_viewer.view_models.needs import build_need_maps, satisfaction_messages
 def render_datasets(data, environment, output_dir):
     specification = data.specification
     url_for = environment.globals["url_for"]
-    profile = specification.tables["specification"].get("planning-application-data", {})
-    datasets = [{**specification.tables["dataset"].get(entry["dataset"], {}), **entry} for entry in profile.get("datasets", [])]
+    try:
+        definition = specification.specification("planning-application-data")
+    except KeyError:
+        definition = None
+    datasets = definition.datasets() if definition else ()
     write_page(environment, output_dir, "dataset", "dataset_index.html", {
         "page_title": "Datasets",
-        "datasets": [{"name": ds.get("name", ds["dataset"]), "description": ds.get("description", ""), "href": url_for(f"/dataset/{ds['dataset']}")} for ds in datasets],
+        "datasets": [{"name": ds.name, "description": ds.description, "href": url_for(f"/dataset/{ds.ref}")} for ds in datasets],
         "links": {"needs": url_for("/user-need"), "github_feedback": "https://github.com/digital-land/planning-application-data-specification/issues/new"},
     })
     need_map, dataset_map = build_need_maps({"need": data.needs, "justification": data.justifications})
     all_justifications = [(need, justification) for need, records in need_map.items() for justification in records]
     for dataset in datasets:
-        ref = dataset["dataset"]
+        ref = dataset.ref
         fields = []
-        for entry in dataset.get("fields", []):
-            field_ref = entry["field"]
-            resolved = specification.resolve_field(field_ref, dataset=ref)
-            target = entry.get("dataset")
+        for resolved in definition.resolve_container_items(dataset=ref):
+            field_ref = resolved.ref
+            target = resolved.target_dataset
             fields.append({
-                "ref": field_ref, "name": entry.get("name") or resolved.name,
-                "description": render_govuk_markdown(entry.get("description") or resolved.description, capitalise=True),
-                "cardinality": entry.get("cardinality") or resolved.cardinality,
-                "datatype": entry.get("datatype") or resolved.datatype,
-                "codelist": entry.get("codelist") or resolved.codelist,
-                "requirement_level": entry.get("requirement-level", resolved.requirement_level),
+                "ref": field_ref, "name": resolved.name,
+                "description": render_govuk_markdown(resolved.description, capitalise=True),
+                "cardinality": resolved.cardinality,
+                "datatype": resolved.datatype,
+                "codelist": resolved.codelist,
+                "requirement_level": resolved.requirement_level,
                 "target_dataset": target, "target_dataset_href": url_for(f"/dataset/{target}") if target else "",
                 "guidance": guidance_html(specification.guidance(dataset=ref, field=field_ref)),
                 "satisfactions": satisfaction_messages_for_field(all_justifications, ref, field_ref, url_for),
@@ -49,7 +51,7 @@ def render_datasets(data, environment, output_dir):
                 "requires_dataset": True,
             })
         write_page(environment, output_dir, f"dataset/{ref}", "dataset_detail.html", {
-            "page_title": f"Dataset {ref}", "title": dataset.get("name", ref), "description": dataset.get("description", ""),
+            "page_title": f"Dataset {ref}", "title": dataset.name, "description": dataset.description,
             "guidance": guidance_html(specification.guidance(dataset=ref)), "fields": fields, "needs": needs,
             "examples": render_dataset_examples_content(dataset_ref=ref, allowed_fields={field["ref"] for field in fields},
                 examples_root=specification.source_path / "specification/example/dataset", content_root=PROJECT_ROOT / "content", template_environment=environment),

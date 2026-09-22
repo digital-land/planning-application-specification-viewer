@@ -29,11 +29,14 @@ def build(source: Path, output_dir: Path, base_url: str = "") -> int:
     count += render_views(data.specification, environment, output_dir)
     count += render_needs(data, environment, output_dir)
     count += render_project_pages(data.specification, environment, output_dir)
-    profile = data.specification.tables["specification"].get("planning-application-data", {})
+    try:
+        datasets = data.specification.specification("planning-application-data").datasets()
+    except KeyError:
+        datasets = ()
     site_map = {
         "index": "index.html",
         "needs": [f"user-need/{n.get('need')}/index.html" for n in sorted(data.needs.values(), key=lambda n: n.get("need", ""))],
-        "datasets": [f"dataset/{ds.get('dataset')}/index.html" for ds in profile.get("datasets", [])],
+        "datasets": [f"dataset/{ds.ref}/index.html" for ds in datasets],
         "application_types": "application-type/index.html",
         "submission_progress": "submissions/progress/index.html",
         "data_model": "data-model/index.html",
