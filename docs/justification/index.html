@@ -190,7 +190,7 @@ data-module="govuk-service-navigation">
       <div class="govuk-hint" id="filter-justifications-hint">Search by ID, user need reference, data reference or explanation. Results update as you type.</div>
       <input class="govuk-input" id="filter-justifications-list" name="list_filter" type="search" aria-describedby="filter-justifications-hint" aria-controls="justifications-list">
     </form>
-    <p class="govuk-body" data-justifications-count role="status" aria-live="polite">Showing 76 justifications.</p>
+    <p class="govuk-body" data-justifications-count role="status" aria-live="polite">Showing 77 justifications.</p>
   </div>
 </div>
 
@@ -280,13 +280,13 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="Capturing received-date alongside the application reference provides the statutory record of when each application arrived, enabling authorities to evidence compliance with procedural duties." data-search-references="[&#34;Dataset: planning-application&#34;, &#34;Field: received-date&#34;, &#34;Field: reference&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="Capturing received-date alongside the application reference provides the statutory record of when each application arrived, enabling authorities to evidence compliance with procedural duties. The same fields let wider planning-system users distinguish receipt by the planning authority from the applicant&#39;s submission and the authority&#39;s later validation activity. This establishes when the authority&#39;s end-to-end handling of the application began." data-search-references="[&#34;Dataset: planning-application&#34;, &#34;Field: received-date&#34;, &#34;Field: reference&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0007">just-0007</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-017">dd-need-017</a></td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-017">dd-need-017</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-064">dd-need-064</a></td>
             <td class="govuk-table__cell">full</td>
             <td class="govuk-table__cell">high</td>
             <td class="govuk-table__cell">proposed</td>
@@ -580,14 +580,14 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The need to track the timeline of a planning application is met when each event is recorded with both its type and the date it occurred in the planning-permission-timeline dataset." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: permission-process-event&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The planning-permission-timeline dataset lets each timeline event record what happened, when it happened and optional human-readable context. This supports a clear account of many key stages and helps users understand progress, repeated events, delays and changes in route or status. The need is partially satisfied because the event codelist does not yet cover every event implied by a complete post-submission timeline. In particular, it does not currently include structured events for amendments or milestones in completing a legal agreement. Optional notes can provide context, but should not substitute for standard event types where consistent tracking is needed." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: permission-process-event&#34;, &#34;Field: event-date&#34;, &#34;Field: notes&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0032">just-0032</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-062">dd-need-062</a></td>
-            <td class="govuk-table__cell">full</td>
+            <td class="govuk-table__cell">partial</td>
             <td class="govuk-table__cell">medium</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
@@ -616,19 +616,7 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The need to see the full post-submission timeline is partly met when each timeline event can record what happened, when it happened, and optional notes that explain the context of the event. The notes field helps users interpret repeated events, delays, route changes or other process events where the event type and date alone may not be enough. It should be used for human-readable context, not as a substitute for standard event types or other structured fields where those are needed." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: permission-process-event&#34;, &#34;Field: event-date&#34;, &#34;Field: notes&#34;]">
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0035">just-0035</a>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
-            </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-079">dd-need-079</a></td>
-            <td class="govuk-table__cell">partial</td>
-            <td class="govuk-table__cell">medium</td>
-            <td class="govuk-table__cell">proposed</td>
-          </tr>
-        
-          <tr class="govuk-table__row" data-justification-item data-search-body="The application-submitted value lets the planning permission timeline record when the applicant submitted the application. Without this value, the specification does not have a standard way to represent the submitted date, because submitted date is not otherwise held as a first-class field on another dataset. Recording the submitted event with event-date and planning-application lets users compare submission with later dates, such as receipt, validation and decision, so they can understand when the application journey started and assess elapsed time." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: application-submitted&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The application-submitted value lets the planning permission timeline record when the applicant submitted the application. Without this value, the specification does not have a standard way to represent the submitted date, because submitted date is not otherwise held as a first-class field on another dataset. Recording the submitted event with event-date and planning-application lets users distinguish submission from receipt by the planning authority and compare it with later dates, such as validation and decision. This provides a clear chronology and supports assessment of elapsed time between stages." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: application-submitted&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0036">just-0036</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
@@ -640,38 +628,38 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The invalid-from value lets the planning permission timeline record when the authority treated an application as invalid. Without this value, the specification would not have a standard way to show when an application stopped progressing because it was invalid. Recording the invalid event with event-date and planning-application lets users understand when the application journey was interrupted and compare that point with submission, receipt, validation, later information requests or other process events. This only partially satisfies the need because it records the point at which the authority treated the application as invalid, but does not explain why the application was invalid or what information was missing." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: invalid-from&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The invalid-from value lets the planning permission timeline record whether and when the authority treated an application as invalid. Recording the invalid event with event-date and planning-application lets users understand the application&#39;s status during validation and compare that point with submission, receipt, later validation activity or other process events. Reasons for invalidity and details of missing information are covered by the related, more specific user needs rather than this status-and-timing need." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: invalid-from&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0037">just-0037</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-065">dd-need-065</a></td>
-            <td class="govuk-table__cell">partial</td>
-            <td class="govuk-table__cell">medium</td>
-            <td class="govuk-table__cell">proposed</td>
-          </tr>
-        
-          <tr class="govuk-table__row" data-justification-item data-search-body="The valid-from value lets the planning permission timeline record the date from which the authority treated an application as valid for statutory or process purposes. The validation-completed value lets the timeline record when the authority completed its validation check. Without both event values, the specification would not distinguish the date the validation check was completed from the date the application was treated as valid from. Together with received-date, these values let users see when formal assessment began and understand how long validation took." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: valid-from&#34;, &#34;Code: validation-completed&#34;, &#34;Field: event-date&#34;, &#34;Dataset: planning-application&#34;, &#34;Field: received-date&#34;]">
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0038">just-0038</a>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
-            </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-066">dd-need-066</a></td>
             <td class="govuk-table__cell">full</td>
             <td class="govuk-table__cell">medium</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The additional-information-requested value lets the planning permission timeline record when the authority asked for further information. Without this value, the specification would not have a standard way to show a process event that may explain a delay or outstanding action. Recording the request event with event-date and planning-application lets users place information requests in sequence with validation, consultation, decision-making and later information being supplied. This only partially satisfies the need because it records when further information was requested, but does not identify what information was requested, who requested it or whether the request remained outstanding." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: additional-information-requested&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The valid-from value lets the planning permission timeline record the date from which the authority treated an application as valid for statutory or process purposes. This lets planning-system users understand when it entered the formal planning process. The validation-completed value lets the timeline record when the authority completed its validation check. Together with received-date, it lets planning service managers measure how long validation took. Keeping validation-completed separate from valid-from also exposes cases where the completed check differs from the date the application was treated as valid, supporting consistent service monitoring." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: valid-from&#34;, &#34;Code: validation-completed&#34;, &#34;Field: event-date&#34;, &#34;Dataset: planning-application&#34;, &#34;Field: received-date&#34;]">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0038">just-0038</a>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
+            </td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-066">dd-need-066</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-127">dd-need-127</a></td>
+            <td class="govuk-table__cell">full</td>
+            <td class="govuk-table__cell">medium</td>
+            <td class="govuk-table__cell">proposed</td>
+          </tr>
+        
+          <tr class="govuk-table__row" data-justification-item data-search-body="The additional-information-requested value lets the planning permission timeline record whether and when the authority asked for further information. Recording the request event with event-date and planning-application lets users place information requests in sequence with validation, consultation, decision-making and later information being supplied. This fully satisfies the status-and-timing need. The content of a request, who made it and whether it remains outstanding are outside the scope of this need." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: additional-information-requested&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0039">just-0039</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-067">dd-need-067</a></td>
-            <td class="govuk-table__cell">partial</td>
+            <td class="govuk-table__cell">full</td>
             <td class="govuk-table__cell">medium</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
@@ -688,7 +676,7 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The consultation-start value lets the planning permission timeline record when a consultation began. Recording the consultation start event with event-date and planning-application helps users understand how things are progressing." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: consultation-start&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The consultation-start and consultation-end values let the planning permission timeline record when consultation with consultees opened and closed. Recording both events with event-date and planning-application lets users understand when consultation with consultees took place and compare that period with consultee contact, received responses and later decision-making. These events concern consultation with authorities or people acting as consultees. They are distinct from statutory publicity intended to invite public representations, which is represented by publicity-start." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: consultation-start&#34;, &#34;Code: consultation-end&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0041">just-0041</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
@@ -700,19 +688,7 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The consultation-end value lets the planning permission timeline record when consultation closed. Recording the consultation end event with event-date and planning-application lets users compare the close of consultation with consultation start, consultee contact, received responses and decision dates." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: consultation-end&#34;, &#34;Field: event-date&#34;]">
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0042">just-0042</a>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
-              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
-            </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-070">dd-need-070</a></td>
-            <td class="govuk-table__cell">full</td>
-            <td class="govuk-table__cell">medium</td>
-            <td class="govuk-table__cell">proposed</td>
-          </tr>
-        
-          <tr class="govuk-table__row" data-justification-item data-search-body="The consultees-contacted value lets the planning permission timeline record when consultees were contacted. Recording the consultee contact event with event-date and planning-application lets users align consultee engagement with consultation periods and later decision-making. It only partially satisfies the need because it records when consultees where contact, but not which ones." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: consultees-contacted&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The consultees-contacted value lets the planning permission timeline record when contact with consultees occurred. Recording the consultee contact event with event-date and planning-application lets users place engagement with consultees in sequence with the consultation period and later decision-making. It only partially satisfies the need because it records when consultees were contacted but not which consultees were asked to advise on the application." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: consultees-contacted&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0043">just-0043</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
@@ -724,14 +700,14 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The call-in-direction-issued value lets the planning permission timeline record when a direction to call in an application was issued. Recording the call-in event with event-date and planning-application lets users compare the call-in point with committee, consultation and decision dates so they can understand the change in route and timetable. This only partially satisfies the need because it records that a call-in direction was issued, but does not identify whether the direction was issued by the Mayor, Secretary of State or another decision-maker." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: call-in-direction-issued&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The call-in-direction-issued value lets the planning permission timeline record whether and when a direction to call in an application was issued. Recording the call-in event with event-date and planning-application lets users compare the call-in point with committee, consultation and decision dates so they can understand the change in route and timetable. This fully satisfies the deliberately scoped baseline need. Distinguishing whether the direction was issued by the Mayor, Secretary of State or another body remains an open specification question that requires further evidence." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: call-in-direction-issued&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0044">just-0044</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-072">dd-need-072</a></td>
-            <td class="govuk-table__cell">partial</td>
+            <td class="govuk-table__cell">full</td>
             <td class="govuk-table__cell">low</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
@@ -760,14 +736,14 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The time-extension-agreed value lets the planning permission timeline record when an extension of time was agreed. Recording the extension event with event-date and planning-application lets users see when the extension was agreed and the affect it has on timescales." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: time-extension-agreed&#34;, &#34;Field: event-date&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The time-extension-agreed value lets the planning permission timeline record whether and when an extension of time was agreed. This satisfies the first part of the need. The specification does not record the revised determination deadline agreed through the extension, which cannot be reliably inferred from the event date. A service would need that agreed deadline as data before it could display the revised timetable or assess progress against it." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: time-extension-agreed&#34;, &#34;Field: event-date&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0047">just-0047</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-076">dd-need-076</a></td>
-            <td class="govuk-table__cell">full</td>
+            <td class="govuk-table__cell">partial</td>
             <td class="govuk-table__cell">medium</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
@@ -784,14 +760,14 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The address-text field lets a site be identified using a familiar postal address or a description of unaddressed land, such as a plot near a junction or landmark. The postcode field supports a common route for searching by location and helps users find applications affecting a local area. UPRNs and USRNs help link the site to existing properties, premises and streets where those identifiers are known. Together, address-text, postcode, uprns, usrns and name support users who recognise places through addresses, postcodes, building names, street descriptions or other plain-language labels rather than through map geometry or system references alone." data-search-references="[&#34;Dataset: site&#34;, &#34;Field: address-text&#34;, &#34;Field: postcode&#34;, &#34;Field: uprns&#34;, &#34;Field: usrns&#34;, &#34;Field: name&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The address-text field lets a site be identified using a familiar postal address or a description of unaddressed land, such as a plot near a junction or landmark. The postcode field supports a common route for searching by location and helps users find applications affecting a local area. UPRNs and USRNs help link the site to existing properties, premises and streets where those identifiers are known. Together, address-text, postcode, uprns, usrns and name support users who recognise places through addresses, postcodes, building names, street descriptions or other plain-language labels rather than through map geometry or system references alone. This fully meets the needs to identify a proposed development in familiar terms and to include familiar location identifiers in site records." data-search-references="[&#34;Dataset: site&#34;, &#34;Field: address-text&#34;, &#34;Field: postcode&#34;, &#34;Field: uprns&#34;, &#34;Field: usrns&#34;, &#34;Field: name&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0049">just-0049</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-094">dd-need-094</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-095">dd-need-095</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/data-need-005">data-need-005</a></td>
-            <td class="govuk-table__cell">partial</td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-094">dd-need-094</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/data-need-005">data-need-005</a></td>
+            <td class="govuk-table__cell">full</td>
             <td class="govuk-table__cell">high</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
@@ -1012,7 +988,7 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="Providing an optional notes field for datasets lets a data producer record relevant context when that information is useful but is not represented elsewhere in the structured record. This may include qualifications, unusual circumstances, source limitations or transitional information encountered while assembling the record. For example, a note can explain that the completed application form was unavailable from the online public register and that the record was assembled from other published evidence. This rule expresses the general design intention that datasets should support additional human-readable context. It does not make notes mandatory on every record and does not mean that notes from every dataset should be published as open data. National public view inclusion must be assessed separately for each dataset because free text may contain sensitive information. Where the same kind of information appears repeatedly and becomes important for filtering, validation or comparison, it should be considered for structured modelling rather than relying only on notes." data-search-references="[&#34;Field: notes&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="Providing an optional notes field for datasets lets a data producer record relevant context when that information is useful but is not represented elsewhere in the structured record. This fully satisfies the need by providing the capability to record exceptional context. It does not guarantee that every relevant qualification will be supplied. Making the field optional is appropriate because many records will not have qualifications, source limitations or unusual circumstances to explain. This may include qualifications, unusual circumstances, source limitations or transitional information encountered while assembling the record. For example, a note can explain that the completed application form was unavailable from the online public register and that the record was assembled from other published evidence. This rule expresses the general design intention that datasets should support additional human-readable context. It does not make notes mandatory on every record and does not mean that notes from every dataset should be published as open data. National public view inclusion must be assessed separately for each dataset because free text may contain sensitive information. Where the same kind of information appears repeatedly and becomes important for filtering, validation or comparison, it should be considered for structured modelling rather than relying only on notes." data-search-references="[&#34;Field: notes&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0068">just-0068</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
@@ -1024,13 +1000,13 @@ data-module="govuk-service-navigation">
             <td class="govuk-table__cell">proposed</td>
           </tr>
         
-          <tr class="govuk-table__row" data-justification-item data-search-body="The officer-name field lets a planning application record identify the case officer responsible for handling the application. This partly meets the need because it shows where responsibility for the case sits, but a name alone may not give a user a reliable way to direct an enquiry. Research is still needed to verify whether users need the named case officer, the responsible team, a contact route or a combination of these. The field is not included in the national public view. Some local planning authorities publish case officer names on their public registers, but this does not yet establish a need to make named officers available as national open data. The publication need and data protection considerations should be reviewed before that boundary changes." data-search-references="[&#34;Dataset: planning-application&#34;, &#34;Field: officer-name&#34;]">
+          <tr class="govuk-table__row" data-justification-item data-search-body="The officer-name field lets a planning application record identify the case officer currently responsible for handling the application. This partly satisfies dd-need-115 because it records current case ownership, but the field is not included in the national public view. Some local planning authorities publish case officer names on their public registers, but this does not yet establish a need to make named officers available as national open data. The publication need and data protection considerations should be reviewed before that boundary changes. This partly satisfies dd-need-128 because current assignments can support a view of practitioner workloads. The specification does not record when an assignment began or ended, or preserve changes in assignment, so it cannot support assignment history, handovers or workload analysis over time." data-search-references="[&#34;Dataset: planning-application&#34;, &#34;Field: officer-name&#34;]">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0069">just-0069</a>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
               <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
             </td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-115">dd-need-115</a></td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-115">dd-need-115</a>, <a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-128">dd-need-128</a></td>
             <td class="govuk-table__cell">partial</td>
             <td class="govuk-table__cell">low</td>
             <td class="govuk-table__cell">proposed</td>
@@ -1116,6 +1092,42 @@ data-module="govuk-service-navigation">
             </td>
             <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-059">dd-need-059</a></td>
             <td class="govuk-table__cell">full</td>
+            <td class="govuk-table__cell">medium</td>
+            <td class="govuk-table__cell">proposed</td>
+          </tr>
+        
+          <tr class="govuk-table__row" data-justification-item data-search-body="The address-text, postcode, uprns, usrns and name fields support finding applications using addresses, postcodes, properties, streets and familiar place names. This only partially meets the need because these identifiers do not define every local area that a public user may recognise or care about, such as a neighbourhood, ward or area within a chosen distance. The specification also provides the data needed for discovery rather than the search capability itself." data-search-references="[&#34;Dataset: site&#34;, &#34;Field: address-text&#34;, &#34;Field: postcode&#34;, &#34;Field: uprns&#34;, &#34;Field: usrns&#34;, &#34;Field: name&#34;]">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0077">just-0077</a>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
+            </td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-095">dd-need-095</a></td>
+            <td class="govuk-table__cell">partial</td>
+            <td class="govuk-table__cell">high</td>
+            <td class="govuk-table__cell">proposed</td>
+          </tr>
+        
+          <tr class="govuk-table__row" data-justification-item data-search-body="The planning-officer-recommendation field records the formal recommendation to grant or refuse made by the planning officer. This partially satisfies the need because it provides the recommendation but not the authority&#39;s assessment or the reasons supporting it. A service would need access to further information, such as an officer, delegated or equivalent decision report, to present the wider assessment and reasoning." data-search-references="[&#34;Dataset: decision-notice&#34;, &#34;Field: planning-officer-recommendation&#34;]">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0078">just-0078</a>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
+            </td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-083">dd-need-083</a></td>
+            <td class="govuk-table__cell">partial</td>
+            <td class="govuk-table__cell">medium</td>
+            <td class="govuk-table__cell">proposed</td>
+          </tr>
+        
+          <tr class="govuk-table__row" data-justification-item data-search-body="The resolution-to-grant and resolution-to-refuse events record what the determining authority resolved and when. This partially satisfies the need because the events record the direction of the resolution but not what the committee considered or the reasons for reaching it. A service would need access to further information, such as a committee report, minutes, recording or another meeting record, to present the consideration and reasoning." data-search-references="[&#34;Dataset: planning-permission-timeline&#34;, &#34;Field: planning-application&#34;, &#34;Field: permission-process-event&#34;, &#34;Codelist: permission-process-event&#34;, &#34;Code: resolution-to-grant&#34;, &#34;Code: resolution-to-refuse&#34;, &#34;Field: event-date&#34;]">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/planning-application-specification-viewer/justification/just-0079">just-0079</a>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-excerpt></p>
+              <p hidden class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-search-reference-match></p>
+            </td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="/planning-application-specification-viewer/user-need/dd-need-084">dd-need-084</a></td>
+            <td class="govuk-table__cell">partial</td>
             <td class="govuk-table__cell">medium</td>
             <td class="govuk-table__cell">proposed</td>
           </tr>
