@@ -12,7 +12,7 @@ def render_applications(specification, environment, output_dir):
                 "href": url_for(f"/application-type/{application.ref}")}
     write_page(environment, output_dir, "application-type", "submission_index.html", {
         "page_title": "Application types",
-        "applications": [index_record(app) for app in applications if not specification.tables["application"][app.ref].get("base-type")],
+        "applications": [index_record(app) for app in applications if not app.is_base_type],
         "combined_applications": [index_record(app) for app in combined],
         "links": {"progress": url_for("/submissions/progress"),
                   "combined_application_decision": url_for("/design-decision/0012-use-a-controlled-list-for-combined-application-types/")},

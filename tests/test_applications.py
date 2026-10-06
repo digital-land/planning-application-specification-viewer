@@ -36,6 +36,14 @@ def test_application_inheritance_combinations_and_index(tmp_path, base_url):
     assert [(field["ref"], field["required"], field["inherited_from"]) for field in context["fields"]] == [("reference", True, "base"), ("name", False, None)]
     assert context["fields"][1]["name"] == "Child name"
     assert [(module["ref"], module["inherited_from"]) for module in context["modules"]] == [("extra", None), ("shared", "base")]
+    child = specification.application("child")
+    child.extends = ["base", "other"]
+    multiple_parents = application_detail(specification, child, environment.globals["url_for"])
+    assert multiple_parents["extends"] is None
+    assert [parent["href"] for parent in multiple_parents["extends_many"]] == [
+        f"{base_url}/application-type/base", f"{base_url}/application-type/other"
+    ]
+    child.extends = "base"
     output = tmp_path / "site"
     assert render_applications(specification, environment, output) == 5
     index = BeautifulSoup((output / "application-type/index.html").read_text(), "html.parser")

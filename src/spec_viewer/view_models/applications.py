@@ -33,25 +33,20 @@ def combined_fields(application):
 
 
 def application_detail(specification, application, url_for):
-    record = {} if application.is_combined else specification.tables["application"][application.ref]
-    parents = record.get("extends") or []
+    parents = application.extends or []
     parents = [parents] if isinstance(parents, str) else parents
-    own_modules = {item if isinstance(item, str) else item.get("module") for item in record.get("modules", []) or []}
-    # Inherited modules use package order; non-inherited modules retain authored order.
-    modules = application.modules
-    if not parents and not application.is_combined:
-        modules = [specification.modules[ref] for item in record.get("modules", []) or []
-                   if (ref := item if isinstance(item, str) else item.get("module")) in specification.modules]
     return {
         "page_title": f"Application {application.ref}", "title": application.name,
         "description": application.description, "application": application.ref,
         "application_types": application.application_types if application.is_combined else [],
-        "base_type": record.get("base-type", False),
-        "extends": {"ref": record["extends"], "href": url_for(f"/application-type/{record['extends']}")} if parents else None,
+        "base_type": application.is_base_type,
+        "extends": {"ref": parents[0], "href": url_for(f"/application-type/{parents[0]}")} if len(parents) == 1 else None,
+        "extends_many": [{"ref": parent, "href": url_for(f"/application-type/{parent}")} for parent in parents] if len(parents) > 1 else [],
         "synonyms": application.synonyms, "notes": application.notes,
         "entry_date": application.entry_date, "legislation": application.legislation,
         "fields": combined_fields(application) if application.is_combined else [field_display(specification, item.definition, item.inherited_from) for item in application.resolved_fields],
-        "modules": [{**linked_record(module, "module", url_for), "description": module.description or "",
-                     "inherited_from": ", ".join(parents) if parents and module.ref not in own_modules else None} for module in modules],
+        "modules": [{**linked_record(usage.module, "module", url_for), "description": usage.module.description or "",
+                     "inherited_from": ", ".join(usage.included_by) if usage.is_inherited else None}
+                    for usage in application.resolved_modules],
         "links": {"back": url_for("/application-type")},
     }

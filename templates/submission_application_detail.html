@@ -81,6 +81,14 @@
       </dd>
     </div>
     {% endif %}
+    {%- if extends_many %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Extends</dt>
+      <dd class="govuk-summary-list__value">
+        {% for parent in extends_many %}<a class="govuk-link" href="{{ parent.href }}"><code>{{ parent.ref }}</code></a>{% if not loop.last %}, {% endif %}{% endfor %}
+      </dd>
+    </div>
+    {% endif %}
     {% if synonyms %}
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">Synonyms</dt>
