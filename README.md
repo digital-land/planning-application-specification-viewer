@@ -62,9 +62,11 @@ Local builds do not delete old output: removed source records can leave stale pa
 
 ## Automated generation
 
-The [render workflow](.github/workflows/render-static-site.yml) runs on non-docs pushes to `main`, daily at 05:17 UTC and manually. It checks out both repositories, installs the locked dependencies and packages, runs tests and the API smoke test, then builds a fresh site. It replaces `docs/`, removes stale generated files and commits only changed output, recording the specification revision.
+The [render workflow](.github/workflows/render-static-site.yml) runs on non-docs pushes to `main`, daily at 05:17 UTC and manually. It selects the most recently published specification prerelease whose tag exactly matches `YYYY.M.D.devN` (for example `2026.10.7.dev1`), resolves the tag to a commit and installs the package from that commit. Drafts, final releases, malformed dates and tags with a leading `v` are excluded. A manual run can supply an eligible published `release_tag` to reproduce a build. If no eligible release exists, the workflow stops with a clear error; it never falls back to `main`.
 
-Daily runs pick up upstream specification changes. A change in the specification repository does not immediately trigger the viewer workflow.
+The workflow fetches project design decisions and the coverage CSV from the source repository's `main` branch separately, with a managed cache for change history. It runs tests and the API smoke test, then builds a fresh site from the installed package and cached project content. It replaces `docs/`, removes stale generated files and commits only changed output. `docs/build-provenance.json` records the selected package version, tag and commit plus the project-content ref and commit.
+
+Daily runs pick up newly published specification prereleases and current project documents. A source repository push alone does not immediately trigger the viewer workflow.
 
 The workflow generates and commits files; it does not deploy GitHub Pages. Its first GitHub run and Pages publishing setup remain to be verified/configured. See [workflow details](WORKFLOW.md) for permissions, concurrency, dependency updates and deployment considerations.
 
@@ -121,7 +123,7 @@ Use `make init` when intentionally refreshing dependencies, and review the resul
 
 ## Validation and known issues
 
-`make tests` runs the automated suite. `make smoke-test` checks the installed package, explicit source path and access to fields, modules, applications, codelists, guidance, needs and justifications. It reports package location and editable-install status.
+`make tests` runs the automated suite. `make smoke-test` checks the installed package bundle and access to fields, modules, applications, codelists, guidance, needs and justifications. Pass `SPEC_ROOT` to test a local source path. It reports package location and editable-install status.
 
 The completed migration was checked against specification commit `2093c2b129d091aed1c91b9da9a0f41b3caf6a78`: all 1,038 output files, including 1,005 HTML pages, matched byte-for-byte for root and hosted URLs. This is a frozen-baseline result; current source content can produce different counts. The suite had 39 passing tests at migration completion.
 
