@@ -19,22 +19,25 @@ make tests
 
 An existing dedicated `spec-viewer` environment can be used instead. `make sync` removes packages outside the locked requirements, so do not run it in a shared environment.
 
-`SPEC_ROOT` defaults to the sibling `../planning-application-data-specification` repository. For another source location, pass the same root during installation and building:
+`PACKAGE_SOURCE` defaults to the sibling `../planning-application-data-specification` repository for local installation. `make sync` installs its built package, so a normal viewer build reads bundled specification resources. To preview authored changes before packaging, pass `SPEC_ROOT` at build time:
 
 ```sh
-make sync SPEC_ROOT=/path/to/planning-application-data-specification
-make smoke-test SPEC_ROOT=/path/to/planning-application-data-specification
-make build SPEC_ROOT=/path/to/planning-application-data-specification
+make sync PACKAGE_SOURCE=/path/to/planning-application-data-specification
+make smoke-test PACKAGE_SOURCE=/path/to/planning-application-data-specification
+make build SPEC_ROOT=/path/to/planning-application-data-specification PROJECT_ROOT=/path/to/planning-application-data-specification
 ```
 
-Pass the repository root, not its `specification/` subdirectory. The source supplies the Python package, specification data, canonical guidance, needs, example JSON, design-decision documents and coverage CSV. Local development currently requires these files; CI fetches its own source checkout. A build-input archive can replace that checkout later.
+Pass repository roots, not their `specification/` subdirectories. `SPEC_ROOT` reads local authored specification changes without reinstalling. `PROJECT_ROOT` separately supplies design decisions and the coverage CSV.
 
 ## Build and preview
 
 ```sh
+make fetch-project-content SOURCE_REF=main
 make build
 make serve
 ```
+
+`fetch-project-content` resolves the requested source ref to a commit, downloads only `documentation/design-decisions/*.md` and `bin/admin_data/2024-application-volumes.csv`, and writes a managed `project-content/` cache. Rendering does not contact GitHub. Pass `PROJECT_ROOT=/path/to/local/checkout` for an offline local override. The cache metadata records its source revision, when it was checked, when the content last changed and SHA-256 hashes for each file. Unchanged fetches keep the earlier `last_updated` time; failed fetches keep the previous complete snapshot.
 
 Open [the local site](http://localhost:8081/). The output directory is `docs/` at the viewer repository root, configured in `pyproject.toml`. Override the preview port with `make serve PORT=8082`.
 
@@ -50,7 +53,7 @@ For a fresh output directory:
 
 ```sh
 python -m spec_viewer.build \
-  --spec-root ../planning-application-data-specification \
+  --project-root ../planning-application-data-specification \
   --output /tmp/spec-viewer-preview
 python -m http.server 8081 --directory /tmp/spec-viewer-preview --bind 127.0.0.1
 ```
@@ -87,7 +90,7 @@ Templates, content and static assets are currently loaded from the viewer checko
 
 ## Data and content boundaries
 
-`load_viewer_data(source)` loads specification models through `Specification.load()` and needs/justifications through the package's separate `loader.load_needs()` API. Page builders share those loaded inputs.
+`load_viewer_data()` loads bundled specification models and needs/justifications through the installed package. `load_viewer_data(source)` uses an explicit local checkout instead. Page builders share those loaded inputs; project documents and reporting data come from `--project-root`.
 
 ```python
 from spec_viewer.data import load_viewer_data

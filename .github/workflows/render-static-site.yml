@@ -52,18 +52,18 @@ jobs:
           python -m venv .venv
           .venv/bin/python -m pip install --upgrade pip
           .venv/bin/python -m pip install -r requirements/dev-requirements.txt
-          .venv/bin/python -m pip install --no-deps -e "$SPEC_ROOT" -e .
+          .venv/bin/python -m pip install --no-deps "$SPEC_ROOT" -e .
           .venv/bin/python -m pip check
 
       - name: Test and check the specification API
         run: |
           make tests PYTHON=.venv/bin/python
-          make smoke-test PYTHON=.venv/bin/python
+          make smoke-test PYTHON=.venv/bin/python SPEC_ROOT=
 
       - name: Build into a fresh directory
         run: |
           output_dir=$(mktemp -d "$RUNNER_TEMP/viewer-site.XXXXXX")
-          .venv/bin/python -m spec_viewer.build --spec-root "$SPEC_ROOT" --output "$output_dir" --base-url "$BASE_URL"
+          .venv/bin/python -m spec_viewer.build --spec-root "$SPEC_ROOT" --project-root "$SPEC_ROOT" --output "$output_dir" --base-url "$BASE_URL"
           test -s "$output_dir/index.html"
           test -s "$output_dir/submissions/progress/index.html"
           # The report includes its input path. Keep that stable across runners.

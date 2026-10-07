@@ -8,10 +8,10 @@ The viewer now renders the homepage, design decisions, examples and submission p
 | Example navigation | Viewer `view_models/examples.py` |
 | Example explanations | Viewer `content/example/` and `content/dataset/` |
 | Canonical example JSON | Source `specification/example/`, read and copied to downloadable output at build time |
-| Design decision Markdown | Source `documentation/design-decisions/`, read directly by the viewer; no specification package API needed |
-| Coverage volumes and source notes | Source `bin/admin_data/2024-application-volumes.csv` |
+| Design decision Markdown | Explicit project-content cache or local `--project-root` under `documentation/design-decisions/`; no specification package API needed |
+| Coverage volumes and source notes | Explicit project-content cache or local `--project-root` under `bin/admin_data/2024-application-volumes.csv` |
 | Coverage calculation and display | Viewer `view_models/progress.py` and progress template, preserving legacy reporting rules |
-| Specification definitions and guidance | Source repository, accessed through the installed package |
+| Specification definitions and guidance | Bundled resources in the installed specification package, or explicit `--spec-root` checkout |
 
 The source repository has not been edited or had files deleted. Moving presentation here means establishing the viewer's own rendering sources, not removing the old renderer before migration is complete.
 
@@ -21,4 +21,4 @@ The progress page remains for mirror parity. Its reporting rules include inherit
 
 ## Build inputs
 
-A source directory is still required during migration. A versioned archive or other distributed input can replace the separate checkout later. This does not require exposing project documentation through the specification package.
+Normal builds use the installed specification package and a prepared project-content cache. The fetch command updates that cache explicitly; rendering stays offline. Local checkouts can override both roots independently.

@@ -18,8 +18,9 @@ from spec_viewer.pages.data_model import render_data_model
 from spec_viewer.rendering import PROJECT_ROOT, create_environment, copy_static
 
 
-def build(source: Path, output_dir: Path, base_url: str = "") -> int:
+def build(source: Path | None, output_dir: Path, base_url: str = "", project_root: Path | None = None) -> int:
     data = load_viewer_data(source)
+    project_root = project_root if project_root is not None else source
     environment = create_environment(base_url)
     output_dir.mkdir(parents=True, exist_ok=True)
     count = render_fields(data.specification, environment, output_dir)
@@ -28,7 +29,7 @@ def build(source: Path, output_dir: Path, base_url: str = "") -> int:
     count += render_datasets(data, environment, output_dir)
     count += render_views(data.specification, environment, output_dir)
     count += render_needs(data, environment, output_dir)
-    count += render_project_pages(data.specification, environment, output_dir)
+    count += render_project_pages(data.specification, environment, output_dir, project_root)
     try:
         datasets = data.specification.specification("planning-application-data").datasets()
     except KeyError:
@@ -54,11 +55,15 @@ def main():
         config = tomllib.load(stream)
     default_output = PROJECT_ROOT / config["tool"]["spec-viewer"]["output-directory"]
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--spec-root", required=True, type=Path, help="Specification repository root")
+    parser.add_argument("--spec-root", type=Path, help="Local specification checkout override (default: installed package)")
+    parser.add_argument("--project-root", type=Path, default=PROJECT_ROOT / "project-content", help="Local project content root (default: prepared project-content cache)")
     parser.add_argument("--output", type=Path, default=default_output)
     parser.add_argument("--base-url", default="")
     args = parser.parse_args()
-    count = build(args.spec_root, args.output, args.base_url)
+    project_root = args.project_root.expanduser().resolve()
+    if not (project_root / "bin/admin_data/2024-application-volumes.csv").is_file() or not list((project_root / "documentation/design-decisions").glob("*.md")):
+        parser.error(f"Project content is incomplete under {project_root}; run the fetch-project-content command or pass --project-root")
+    count = build(args.spec_root, args.output, args.base_url, project_root)
     print(f"Built {count} pages in {args.output.resolve()}")
 
 

@@ -180,17 +180,19 @@ def render_submission_progress_page(
     progress_html = renderer.render("submission_progress.html", progress_ctx)
     renderer.write_page("submissions/progress/index.html", progress_html)
 
-def render_project_pages(specification, environment, output_dir):
+def render_project_pages(specification, environment, output_dir, project_root=None):
+    project_root = Path(project_root) if project_root is not None else specification.source_path
     renderer = PageWriter(environment, output_dir)
     render_index(renderer)
-    render_design_decisions(renderer, load_design_decisions(specification.source_path / "documentation"))
+    render_design_decisions(renderer, load_design_decisions(project_root / "documentation"))
     # Small synthetic sources used by tests need not include the curated examples/report.
     if (specification.source_path / "specification/example").is_dir():
         render_examples(renderer, specification.source_path / "specification")
-    progress_input = specification.source_path / "bin/admin_data/2024-application-volumes.csv"
+    progress_input = project_root / "bin/admin_data/2024-application-volumes.csv"
     if progress_input.is_file():
         progress = build_progress_view_model(progress_input, spec_application_refs=set(specification.applications),
             active_combined_application_refs=get_active_combined_application_refs(specification.tables))
+        progress["summary"]["input"] = "bin/admin_data/2024-application-volumes.csv"
         render_submission_progress_page(renderer, progress)
         renderer.write_page("submissions/progress/data.json", json.dumps(progress, indent=2))
     return renderer.count

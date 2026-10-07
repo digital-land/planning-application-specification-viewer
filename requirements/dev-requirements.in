@@ -1,2 +1,5 @@
 -r requirements.txt
 pytest
+build>=1.0
+setuptools>=68
+wheel>=0.42

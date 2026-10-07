@@ -1,4 +1,4 @@
-"""Check the installed specification API against an explicit source directory."""
+"""Check the installed specification API and optional local checkout override."""
 import argparse
 import json
 from importlib.metadata import distribution
@@ -11,9 +11,9 @@ from spec_viewer.data import load_viewer_data
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source", type=Path, help="Specification repository directory")
+    parser.add_argument("source", nargs="?", type=Path, help="Optional local specification checkout")
     args = parser.parse_args()
-    source = args.source.resolve()
+    source = args.source.resolve() if args.source is not None else None
     installed = distribution("planning-application-specification")
     direct_url = json.loads(installed.read_text("direct_url.json") or "{}")
     data = load_viewer_data(source)
@@ -38,7 +38,7 @@ def main():
         "package_version": installed.version,
         "package_location": planning_application_specification.__file__,
         "editable": direct_url.get("dir_info", {}).get("editable", False),
-        "data_path": str(source),
+        "data_path": str(spec.source_path),
         "checks": list(checks),
         "counts": {
             "fields": len(spec.fields),

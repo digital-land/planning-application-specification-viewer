@@ -17,13 +17,13 @@ class ViewerData:
     justifications: dict[str, Any]
 
 
-def load_viewer_data(source: str | Path) -> ViewerData:
-    """Read an explicit repository root without changing the working directory.
+def load_viewer_data(source: str | Path | None = None) -> ViewerData:
+    """Read the package bundle, or an explicit local checkout.
 
     Keep package models intact: resolution, inheritance, codelists and guidance
     remain the responsibility of the installed specification package.
     """
-    source = Path(source).expanduser().resolve()
+    source = Path(source).expanduser().resolve() if source is not None else None
     specification = Specification.load(source)
     need_records = load_needs(source)
     return ViewerData(
