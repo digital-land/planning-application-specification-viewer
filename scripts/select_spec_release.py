@@ -3,9 +3,10 @@
 import argparse
 from datetime import datetime
 import json
+import os
 from pathlib import Path
 import re
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 
 
@@ -16,6 +17,9 @@ TAG_PATTERN = re.compile(r"^(\d{4})\.(\d{1,2})\.(\d{1,2})\.dev([1-9]\d*)$")
 
 def get_json(url):
     request = Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "spec-viewer-release-selector"})
+    token = os.environ.get("GITHUB_TOKEN")
+    if token and urlsplit(url).scheme == "https" and urlsplit(url).netloc == "api.github.com":
+        request.add_header("Authorization", f"Bearer {token}")
     with urlopen(request, timeout=30) as response:
         return json.load(response)
 

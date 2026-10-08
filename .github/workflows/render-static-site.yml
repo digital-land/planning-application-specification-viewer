@@ -46,6 +46,7 @@ jobs:
       - name: Select published specification prerelease
         env:
           RELEASE_TAG: ${{ inputs.release_tag }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/select_spec_release.py --tag "$RELEASE_TAG" --output "$RUNNER_TEMP/spec-release.json" --github-env "$GITHUB_ENV"
 
@@ -68,6 +69,8 @@ jobs:
           .venv/bin/python -c 'from importlib.metadata import version; import os; assert version("planning-application-specification") == os.environ["SPEC_RELEASE_VERSION"]'
 
       - name: Fetch project documents and reporting data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           .venv/bin/python -m spec_viewer.project_content --ref main --cache project-content
           .venv/bin/python - "$GITHUB_ENV" <<'PYTHON'

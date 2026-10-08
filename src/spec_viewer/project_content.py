@@ -9,7 +9,7 @@ from pathlib import Path
 import shutil
 import tempfile
 from uuid import uuid4
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 
 from spec_viewer.rendering import PROJECT_ROOT
@@ -23,6 +23,9 @@ MAX_FILE_SIZE = 2_000_000
 
 def _read_url(url: str) -> bytes:
     request = Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "spec-viewer-content-fetch"})
+    token = os.environ.get("GITHUB_TOKEN")
+    if token and urlsplit(url).scheme == "https" and urlsplit(url).netloc == "api.github.com":
+        request.add_header("Authorization", f"Bearer {token}")
     with urlopen(request, timeout=30) as response:
         return response.read()
 
