@@ -174,7 +174,7 @@ def render_submission_progress_page(
             "back": renderer.url_for("/application-type"),
             "application_types": renderer.url_for("/application-type"),
             "github_issue_url": "https://github.com/digital-land/planning-application-data-specification/issues/new?title=Feedback%20on%20submission%20progress%20page",
-            "github_edit_url": "https://github.com/digital-land/planning-application-data-specification/edit/main/bin/templates/submission_progress.html",
+            "github_edit_url": "https://github.com/digital-land/planning-application-specification-viewer/edit/main/templates/submission_progress.html",
         },
     }
     progress_html = renderer.render("submission_progress.html", progress_ctx)
