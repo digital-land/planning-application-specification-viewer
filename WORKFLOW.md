@@ -22,6 +22,10 @@ This workflow generates and commits files; it does not deploy GitHub Pages. GitH
 
 Dependency lock updates remain reviewed source changes. If the upstream package adds dependencies, `pip check` fails until the locks are updated rather than silently changing the environment.
 
+## Open task: show the specification version to readers
+
+The build records the selected specification version, tag and commit in `docs/build-provenance.json`, but readers cannot yet see which release a page uses. Show the release version on the viewer and link it to the matching specification release. Use the recorded build provenance as the source so the displayed version always matches the content. Check that the link works in both local and hosted builds. This task does not require browsing multiple versions, which remains a separate scope decision below.
+
 ## Open scope decision: support for multiple specification versions
 
 The viewer currently generates one selected specification version at a time. Each successful build replaces the generated site. Selecting an older release manually changes that single output; it does not make several versions available side by side.
