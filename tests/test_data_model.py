@@ -22,6 +22,17 @@ def test_nested_fields_guidance_and_links(tmp_path, base_url):
     guide.write_text("---\nmodule: proposal\nfield: choice\n---\nExplain this choice.")
     output = tmp_path / "site"
     build(source, output, base_url)
+    data_model = BeautifulSoup((output / "data-model/index.html").read_text(), "html.parser")
+    assert "Select a marker to explore each part and how it connects to the others." in data_model.get_text(" ", strip=True)
+    assert "How an application submission is structured" in data_model.get_text(" ", strip=True)
+    assert "How planning authorities record information" in data_model.get_text(" ", strip=True)
+    assert "How views select information" in data_model.get_text(" ", strip=True)
+    assert data_model.select_one('[data-embed-id="planning-spec-three-parts-no-a6"]')
+    assert len(data_model.select(".ia-hotspot")) == 5
+    assert not data_model.select_one('[data-annotation-id="A6"]')
+    assert data_model.find("a", href=f"{base_url}/view/national-public/")
+    assert data_model.find("a", href=f"{base_url}/view/national-public/info/")
+    assert not data_model.find("h2", string="Model elements")
     module = (output / "module/proposal/index.html").read_text()
     assert "Details component" in module
     assert "Explain this choice." in module

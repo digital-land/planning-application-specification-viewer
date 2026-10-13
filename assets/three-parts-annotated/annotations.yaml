@@ -1,0 +1,55 @@
+version: 1
+embed_id: planning-spec-three-parts-no-a6
+title: The three parts of the planning application specification
+subtitle: Select a numbered marker to explore what is submitted, what the authority holds and what is made available.
+image: three-parts.jpg
+image_alt: Diagram showing a submission service sending application information to a planning authority. The authority records information through receipt, validation, consultation, refinement and deliberation. Selected information is made available through views, including the defined national public view and possible future appeals and consultee views.
+prompt: Explain the three parts of the planning application data standard and how they connect. Use plain English, circular popover markers and site-compatible colours. Produce a portable embed. The annotations are an editorial synthesis, not direct quotations.
+layout: popover
+theme: default
+theme_overrides:
+  accent: '#1d70b8'
+  selected_accent: '#0b0c0c'
+  page_background: '#ffffff'
+  card_background: '#ffffff'
+annotations:
+  - id: A1
+    title: What must be submitted
+    hotspot: {x: 18, y: 20, width: 14, height: 29}
+    marker: {x: 25, y: 16}
+    body: |
+      The submission specification defines the information an applicant needs to provide when making an application. A submission service prepares and sends that information to the planning authority.
+
+      The submission specification includes rules about which information is needed for each application type and how one answer can make another question relevant. All submission services must conform with the specification.
+  - id: A2
+    title: What the authority must hold
+    hotspot: {x: 36, y: 40, width: 30, height: 22}
+    marker: {x: 50, y: 57}
+    body: |
+      The planning application data specification describes the information the authority records and maintains. Submitted information is a starting point. The authority adds and updates records as it handles the application, including documents, events and decisions.
+
+      The specification describes the data, rather than requiring a particular back-office product or internal database layout. Some of the information included in the specification will remain private and is not part of the national public view.
+  - id: A3
+    title: Information changes through the process
+    hotspot: {x: 37, y: 27, width: 28, height: 11}
+    marker: {x: 51, y: 22}
+    body: |
+      As an application moves through the process, the authority adds information such as consultation events, further documents and the decision notice.
+
+      This helps people understand what is happening, how many applications are open and how long they have been in the system.
+  - id: A4
+    title: The national public view
+    hotspot: {x: 76, y: 31, width: 15, height: 9}
+    marker: {x: 92.5, y: 35.5}
+    body: |
+      The national public view defines which parts of the authority's records are to be made available as open data. It selects datasets, fields and records from the wider planning application data specification.
+
+      It is a selected extract, not the whole submission or everything the authority holds. The authority makes this data available, and the planning data platform collects it for national use.
+  - id: A5
+    title: Other views could meet other needs
+    hotspot: {x: 76, y: 42, width: 14, height: 16}
+    marker: {x: 92.5, y: 52}
+    body: |
+      Different users may need different selections of the information the authority holds. The appeals and statutory consultee boxes illustrate possible future views. They have not yet been defined.
+
+      Each view needs a clear purpose and an agreed set of data and access rules. Not all information needed for a particular purpose automatically belongs in the open national public view.

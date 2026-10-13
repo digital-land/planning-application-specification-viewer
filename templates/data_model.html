@@ -17,52 +17,71 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
+  <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl">Data model</h1>
-    <p class="govuk-body-l">The planning application data standard is made from connected parts that describe applications, reusable data groups and individual fields.</p>
+    <p class="govuk-body-l">The planning application data standard describes what applicants submit, what planning authorities record and what information is made available for others to use.</p>
 
-    <h2 class="govuk-heading-l">Model elements</h2>
-    <p class="govuk-body">The data model contains these elements:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a class="govuk-link" href="{{ links.application_types }}">Application types</a></li>
-      <li><a class="govuk-link" href="{{ links.modules }}">Modules</a></li>
-      <li><a class="govuk-link" href="{{ links.components }}">Components</a></li>
-      <li><a class="govuk-link" href="{{ links.fields }}">Fields</a></li>
-      <li><a class="govuk-link" href="{{ links.codelists }}">Codelists</a></li>
-      <li><a class="govuk-link" href="{{ links.datasets }}">Datasets</a></li>
-    </ul>
-  
-    <h2 class="govuk-heading-l">How the parts fit together</h2>
-    <p class="govuk-body">At a high level the standard works like this:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>an application definition says what is needed for a given application type</li>
-      <li>every application includes submission details for submission-level information</li>
-      <li>an application uses modules</li>
-      <li>a module groups related fields</li>
-      <li>a component defines a reusable group of fields used inside modules or other field definitions</li>
-      <li>a field defines an individual data item, including its datatype</li>
-      <li>if a field is controlled, the field definition points to a codelist</li>
-      <li>the codelist defines the allowed values</li>
-      <li>co-constraints describe conditional rules, such as when a field applies or becomes required</li>
-      <li>datasets describe record data captured and shared as a planning application moves through the planning permission process</li>
-    </ul>
+    <p class="govuk-body">Select a marker to explore each part and how it connects to the others.</p>
+    {% include "components/three-parts-no-a6.embed.html" %}
 
-    <p class="govuk-body">The simple path through the model is:</p>
-    <p class="govuk-body"><code>application -&gt; module -&gt; component / field -&gt; datatype / codelist</code></p>
-    <p class="govuk-body">Datasets are related to this model, but they are not part of an application definition. An application definition describes the data needed for a specific application type. Datasets describe records created and reused through the wider process, such as applications, sites, documents, decisions, conditions, section 106 agreements and timeline events.</p>
+    <div class="govuk-grid-row govuk-!-margin-top-4">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">A submission provides the starting information. The authority maintains records as the application progresses. Views select information from those records for particular purposes, including publication as open data.</p>
+      </div>
+    </div>
 
-    <h2 class="govuk-heading-l">Supporting information</h2>
-    <p class="govuk-body">The standard includes supporting information that explains why the data model exists and how modelling choices were made.</p>
+    <h2 class="govuk-heading-l">How an application submission is structured</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">An application type brings together modules. Modules group related fields and can use components to reuse groups of fields. Modules can also contain fields directly. Fields define individual items of information and can link to codelists that set allowed values.</p>
+        <p class="govuk-body">Conditional rules explain when information applies or is required. For example, one answer can make another field relevant.</p>
+        <p class="govuk-body"><strong>Example structure:</strong> application type → module → component → field. A module can also link directly to a field.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="{{ links.application_types }}">Application types</a></li>
+          <li><a class="govuk-link" href="{{ links.modules }}">Modules</a></li>
+          <li><a class="govuk-link" href="{{ links.components }}">Components</a></li>
+          <li><a class="govuk-link" href="{{ links.fields }}">Fields</a></li>
+          <li><a class="govuk-link" href="{{ links.codelists }}">Codelists</a></li>
+        </ul>
+      </div>
+    </div>
 
-    <h3 class="govuk-heading-m">User needs</h3>
-    <p class="govuk-body">User needs describe what people need to achieve. Justification records capture how parts of the data model satisfy those needs.</p>
-    <p class="govuk-body"><a class="govuk-link" href="{{ links.needs }}">View user needs</a>.</p>
-    <p class="govuk-body"><a class="govuk-link" href="{{ links.justifications }}">View justification records</a>.</p>
+    <h2 class="govuk-heading-l">How planning authorities record information</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">A dataset describes one kind of thing. It contains records for that thing, with fields describing each record and references connecting related records. For example, a planning application can link to a site, and a decision notice can link to its application.</p>
+        <p class="govuk-body">Datasets describe the information authorities maintain. They do not prescribe how an authority must arrange its internal systems.</p>
+        <p class="govuk-body"><a class="govuk-link" href="{{ links.datasets }}">Explore the datasets</a></p>
+      </div>
+    </div>
 
-    <h3 class="govuk-heading-m">Design decisions</h3>
-    <p class="govuk-body">Design decisions record why parts of the standard are modelled in a particular way.</p>
-    <p class="govuk-body"><a class="govuk-link" href="{{ links.design_decisions }}">View design decisions</a>.</p>
+    <h2 class="govuk-heading-l">How views select information</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">A view selects datasets, fields and records for a purpose. The <a class="govuk-link" href="{{ links.national_public_view }}">national public view</a> defines the planning data to make available as open data. It is a selected part of the wider information authorities record.</p>
+        <p class="govuk-body"><a class="govuk-link" href="{{ links.national_public_view_info }}">Read about the national public view</a>.</p>
+      </div>
+    </div>
 
+    <h2 class="govuk-heading-l">Shared definitions</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Fields and codelists are shared building blocks. A field describes an item of information and its datatype. A codelist gives the controlled values that can be used for a field.</p>
+        <p class="govuk-body">Browse the <a class="govuk-link" href="{{ links.fields }}">field</a> and <a class="govuk-link" href="{{ links.codelists }}">codelist</a> indexes.</p>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-l">Why information is included</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">User needs describe what people need to achieve. Justification records explain how parts of the data model support those needs. Design decisions record why the model uses a particular approach.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="{{ links.needs }}">User needs</a></li>
+          <li><a class="govuk-link" href="{{ links.justifications }}">Justifications</a></li>
+          <li><a class="govuk-link" href="{{ links.design_decisions }}">Design decisions</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

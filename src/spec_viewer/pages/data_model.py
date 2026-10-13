@@ -18,6 +18,8 @@ def render_data_model(specification, environment, output_dir):
             ("components", "component"), ("fields", "field"), ("codelists", "codelist"),
             ("datasets", "dataset"), ("needs", "user-need"),
             ("justifications", "justification"), ("design_decisions", "design-decision"),
+            ("national_public_view", "view/national-public"),
+            ("national_public_view_info", "view/national-public/info"),
         ]},
     })
     count = 1
