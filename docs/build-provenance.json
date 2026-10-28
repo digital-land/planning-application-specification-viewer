@@ -1,13 +1,13 @@
 {
   "specification": {
     "repository": "digital-land/planning-application-data-specification",
-    "version": "2026.10.7.dev1",
-    "tag": "2026.10.7.dev1",
-    "revision": "cece92417cda94f3e4e179b70ace5bfbe43cfff0"
+    "version": "2026.10.28.dev1",
+    "tag": "2026.10.28.dev1",
+    "revision": "1ebf03d7f3ddedd5594699e6c95f8b7f83f7d205"
   },
   "project_content": {
     "repository": "digital-land/planning-application-data-specification",
     "requested_ref": "main",
-    "revision": "80345f2ba51a1774415c0ad15b9d60219bb85b61"
+    "revision": "2ec0e6dedcd09cfa763a1db9df3d036573d20943"
   }
 }

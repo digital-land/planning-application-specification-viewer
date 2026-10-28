@@ -6,8 +6,8 @@
     "out_of_scope_rows": 27,
     "total_2024_volume": 546058,
     "in_scope_2024_volume": 546058,
-    "covered_2024_volume": 538064,
-    "completeness_pct": 98.5
+    "covered_2024_volume": 540310,
+    "completeness_pct": 98.9
   },
   "covered_by_spec": [
     {
@@ -203,6 +203,17 @@
       "notes": ""
     },
     {
+      "name": "Change of use from agricultural buildings to dwellinghouses",
+      "refs": [
+        "cho-agri-to-dwh"
+      ],
+      "label": "Change of use from agricultural buildings to dwellinghouses (cho-agri-to-dwh)",
+      "volume": 2246,
+      "covered_by_spec": true,
+      "type": "single",
+      "notes": ""
+    },
+    {
       "name": "Outline Planning Permission with Some Matters Reserved",
       "refs": [
         "outline-some"
@@ -348,17 +359,6 @@
     }
   ],
   "not_covered_by_spec": [
-    {
-      "name": "Change of use from agricultural buildings to dwellinghouses",
-      "refs": [
-        "cho-agri-to-dwh"
-      ],
-      "label": "Change of use from agricultural buildings to dwellinghouses (cho-agri-to-dwh)",
-      "volume": 2246,
-      "covered_by_spec": false,
-      "type": "single",
-      "notes": ""
-    },
     {
       "name": "Electronic communications network development",
       "refs": [

@@ -880,10 +880,15 @@ data-module="govuk-service-navigation">
                 
 <div class="govuk-summary-list__row">
   <dt class="govuk-summary-list__key">Datatype</dt>
-  <dd class="govuk-summary-list__value"><code>boolean</code></dd>
+  <dd class="govuk-summary-list__value"><code>enum</code></dd>
 </div>
 
                 
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">Allowed values</dt>
+  <dd class="govuk-summary-list__value"><a class="govuk-link" href="/planning-application-specification-viewer/codelist/planning-performance-agreement-classification">Planning performance agreement classification codelist</a></dd>
+</div>
+
                 
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">Requirement level</dt>
@@ -900,13 +905,14 @@ data-module="govuk-service-navigation">
   </summary>
   <div class="govuk-details__text">
     <h3 class="govuk-heading-m" id="how-to-use-it">How to use it</h3>
-<p class="govuk-body">Use this field only to record whether the particular planning application is subject to a planning performance agreement.</p>
+<p class="govuk-body">Use this field only to classify whether the particular planning application was subject to a Planning Performance Agreement (PPA).</p>
 <ul class="govuk-list govuk-list--bullet">
-<li>Use <code class="app-code">true</code> when a planning performance agreement applies.</li>
-<li>Use <code class="app-code">false</code> when it is known that no planning performance agreement applies.</li>
-<li>Omit the field when this information has not been recorded or is not known.</li>
+<li>Use <code class="app-code">subject-to-ppa</code> when a PPA applied.</li>
+<li>Use <code class="app-code">not-subject-to-ppa</code> when it is known that no PPA applied.</li>
+<li>Use <code class="app-code">unknown</code> when the authority cannot establish whether a PPA applied.</li>
 </ul>
-<p class="govuk-body">Do not use this field to describe the agreement, its terms or its milestones.</p>
+<p class="govuk-body">The field has a <code class="app-code">MUST</code> requirement level, so supply one of these values for each application. Do not use <code class="app-code">unknown</code> simply because no one has checked. An omitted value means the classification has not been supplied.</p>
+<p class="govuk-body">These values do not distinguish a renegotiated PPA from another PPA. Do not use this field to describe the agreement, its terms or its milestones.</p>
   </div>
 </details>
 
@@ -1302,7 +1308,7 @@ data-module="govuk-service-navigation">
 </tr>
 <tr class="govuk-table__row">
 <th class="govuk-table__header" scope="row"><code>planning-performance-agreement</code></th>
-<td class="govuk-table__cell">false</td>
+<td class="govuk-table__cell">not-subject-to-ppa</td>
 </tr>
 <tr class="govuk-table__row">
 <th class="govuk-table__header" scope="row"><code>document-url</code></th>
@@ -1329,7 +1335,7 @@ data-module="govuk-service-navigation">
   "received-date": "2026-02-16",
   "planning-authority": "local-authority:CMD",
   "development-scale": "major",
-  "planning-performance-agreement": false,
+  "planning-performance-agreement": "not-subject-to-ppa",
   "document-url": "https://example.org/planning-applications/2026-0123-ful/application-form.pdf",
   "documentation-url": "https://example.org/planning-applications/2026-0123-ful"
 }</code></pre>
@@ -1392,7 +1398,7 @@ data-module="govuk-service-navigation">
 </tr>
 <tr class="govuk-table__row">
 <th class="govuk-table__header" scope="row"><code>planning-performance-agreement</code></th>
-<td class="govuk-table__cell">false</td>
+<td class="govuk-table__cell">not-subject-to-ppa</td>
 </tr>
 <tr class="govuk-table__row">
 <th class="govuk-table__header" scope="row"><code>document-url</code></th>
@@ -1420,7 +1426,7 @@ data-module="govuk-service-navigation">
   "received-date": "2026-03-09",
   "planning-authority": "local-authority:CMD",
   "development-scale": "minor",
-  "planning-performance-agreement": false,
+  "planning-performance-agreement": "not-subject-to-ppa",
   "document-url": "https://example.org/planning-applications/2026-0204-ful/application-form.pdf",
   "documentation-url": "https://example.org/planning-applications/2026-0204-ful"
 }</code></pre>

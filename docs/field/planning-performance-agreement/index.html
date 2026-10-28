@@ -193,7 +193,7 @@ data-module="govuk-service-navigation">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">Field</span>
     <h1 class="govuk-heading-xl">Planning performance agreement</h1>
-    <p class="govuk-body-l">Whether the application was subject to a Planning Performance Agreement</p>
+    <p class="govuk-body-l">Classification of whether the application was subject to a Planning Performance Agreement</p>
 
     <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
@@ -206,7 +206,7 @@ data-module="govuk-service-navigation">
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">Datatype</dt>
-        <dd class="govuk-summary-list__value">boolean</dd>
+        <dd class="govuk-summary-list__value">enum</dd>
       </div>
       
       <div class="govuk-summary-list__row">
@@ -222,6 +222,13 @@ data-module="govuk-service-navigation">
       </div>
       
       
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Codelist</dt>
+        <dd class="govuk-summary-list__value">
+          <a class="govuk-link" href="/planning-application-specification-viewer/codelist/planning-performance-agreement-classification">planning-performance-agreement-classification</a>
+        </dd>
+      </div>
+      
       
       
       <div class="govuk-summary-list__row">
@@ -233,7 +240,7 @@ data-module="govuk-service-navigation">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">Notes</dt>
         <dd class="govuk-summary-list__value">
-          <p class="govuk-body">Used as a reporting classification for applications subject to a Planning Performance Agreement. True means the application was subject to a Planning Performance Agreement. False means it is known not to have been subject to one. Blank means this is not recorded or not known.</p>
+          <p class="govuk-body">Used for reporting whether an application was subject to a Planning Performance Agreement. Use subject-to-ppa when an agreement applied and not-subject-to-ppa when it is known that none applied. Use unknown when the authority cannot establish whether one applied. An omitted value means the classification has not been supplied.</p>
           
         </dd>
       </div>
